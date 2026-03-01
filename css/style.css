@@ -450,11 +450,12 @@ main {
     border-radius: 12px;
     overflow: hidden;
     cursor: pointer;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease, border-color 0.3s ease;
     position: relative;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
     display: flex;
     flex-direction: column;
+    border: 2px solid transparent;
 }
 
 .episode-card:hover {
@@ -824,6 +825,10 @@ main {
     animation: slideUp 0.3s ease;
 }
 
+#toast.hide {
+    animation: slideDown 0.3s ease forwards;
+}
+
 @keyframes slideUp {
     from {
         transform: translate(-50%, 20px);
@@ -833,6 +838,18 @@ main {
     to {
         transform: translate(-50%, 0);
         opacity: 1;
+    }
+}
+
+@keyframes slideDown {
+    from {
+        transform: translate(-50%, 0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translate(-50%, 20px);
+        opacity: 0;
     }
 }
 

@@ -83,13 +83,19 @@ const animeDatabase = {
 };
 
 
-// Berserk Episodes (5 episodes, 1997 series)
+// Berserk Episodes (11 episodes)
 const berserkEpisodes = [
-    { id: 1, title: "Bölüm 1: Kara Kılıç Ustası", source: "https://akumaryu-2.asia/file/tau-video/7791_1_1_720p.mp4" },
-    { id: 2, title: "Bölüm 2: Şahin Tugayı", source: "https://arukane-4.asia/file/tau-video/7791_1_2_720p.mp4" },
-    { id: 3, title: "Bölüm 3: İlk Savaş", source: "https://inorix-2.asia/file/tau-video/7791_1_3_720p.mp4" },
-    { id: 4, title: "Bölüm 4: Tanrının Eli", source: "https://akumaryu-2.asia/file/tau-video/7791_1_4_720p.mp4" },
-    { id: 5, title: "Bölüm 5: Kılıç Rüzgarı", source: "https://kitsurai-3.asia/file/tau-video/7791_1_5_720p.mp4" },
+    { id: 1, title: "Bölüm 1: Kara Kılıç Ustası", source: "https://akumaryu-2.asia/file/tau-video/7791_1_1_720p.mp4", rating: "7.7" },
+    { id: "2016_1", title: "2016, 1. bölüm", source: "https://zorami-2.asia/file/tau-video/1f36bd96-6f69-418f-8805-8fe11f9722cc.mp4", rating: "TBA" },
+    { id: 2, title: "Bölüm 2: Şahin Tugayı", source: "https://arukane-4.asia/file/tau-video/7791_1_2_720p.mp4", rating: "7.7" },
+    { id: 3, title: "Bölüm 3: İlk Savaş", source: "https://inorix-2.asia/file/tau-video/7791_1_3_720p.mp4", rating: "7.8" },
+    { id: 4, title: "Bölüm 4: Tanrının Eli", source: "https://akumaryu-2.asia/file/tau-video/7791_1_4_720p.mp4", rating: "7.7" },
+    { id: 5, title: "Bölüm 5: Kılıç Rüzgarı", source: "https://kitsurai-3.asia/file/tau-video/7791_1_5_720p.mp4", rating: "7.5" },
+    { id: 6, title: "Bölüm 6: Ölümsüz Zodd", source: "", rating: "8.5" },
+    { id: 7, title: "Bölüm 7: Kılıcın Sahibi", source: "", rating: "7.3" },
+    { id: 8, title: "Bölüm 8: Komplo", source: "", rating: "7.5" },
+    { id: 9, title: "Bölüm 9: Suikast", source: "", rating: "7.7" },
+    { id: 10, title: "Bölüm 10: Soylu Adam", source: "", rating: "8.9" },
 ];
 
 // Bleach State Management
@@ -895,10 +901,23 @@ infoCloseBtn.onclick = closeModal;
 window.onclick = (e) => { if (e.target.classList.contains('modal')) closeModal(); };
 document.onkeydown = (e) => { if (e.key === 'Escape') closeModal(); };
 
+let toastTimeout;
+let toastHideTimeout;
+
 function showToast(msg) {
+    clearTimeout(toastTimeout);
+    clearTimeout(toastHideTimeout);
+
     toast.textContent = msg;
+    toast.classList.remove('hide');
     toast.style.display = 'block';
-    setTimeout(() => toast.style.display = 'none', 3000);
+
+    toastTimeout = setTimeout(() => {
+        toast.classList.add('hide');
+        toastHideTimeout = setTimeout(() => {
+            toast.style.display = 'none';
+        }, 300);
+    }, 2700);
 }
 
 window.onscroll = () => {
