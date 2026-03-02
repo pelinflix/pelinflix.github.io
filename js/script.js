@@ -83,7 +83,7 @@ const animeDatabase = {
 };
 
 
-// Berserk Episodes (10 episodes)
+// Berserk Episodes (25 episodes)
 const berserkEpisodes = [
     { id: 1, title: "Bölüm 1: Kara Kılıç Ustası", source: "https://akumaryu-2.asia/file/tau-video/7791_1_1_720p.mp4", rating: "7.7" },
     { id: 2, title: "Bölüm 2: Şahin Tugayı", source: "https://arukane-4.asia/file/tau-video/7791_1_2_720p.mp4", rating: "7.7" },
@@ -95,6 +95,21 @@ const berserkEpisodes = [
     { id: 8, title: "Bölüm 8: Komplo", source: "https://gojousatoru.icu/file/tau-video/7791_1_8_720p.mp4", rating: "7.5" },
     { id: 9, title: "Bölüm 9: Suikast", source: "https://gojousatoru.icu/file/tau-video/7791_1_9_720p.mp4", rating: "7.7" },
     { id: 10, title: "Bölüm 10: Soylu Adam", source: "https://gojousatoru.icu/file/tau-video/7791_1_10_720p.mp4", rating: "8.9" },
+    { id: 11, title: "Bölüm 11", source: "https://chisato.cfd/file/tau-video/7791_1_11_720p.mp4", rating: "TBA" },
+    { id: 12, title: "Bölüm 12", source: "https://chisato.cfd/file/tau-video/7791_1_12_720p.mp4", rating: "TBA" },
+    { id: 13, title: "Bölüm 13", source: "https://chisato.cfd/file/tau-video/7791_1_13_720p.mp4", rating: "TBA" },
+    { id: 14, title: "Bölüm 14", source: "https://chisato.cfd/file/tau-video/7791_1_14_720p.mp4", rating: "TBA" },
+    { id: 15, title: "Bölüm 15", source: "https://chisato.cfd/file/tau-video/7791_1_15_720p.mp4", rating: "TBA" },
+    { id: 16, title: "Bölüm 16", source: "https://chisato.cfd/file/tau-video/7791_1_16_720p.mp4", rating: "TBA" },
+    { id: 17, title: "Bölüm 17", source: "https://chisato.cfd/file/tau-video/7791_1_17_720p.mp4", rating: "TBA" },
+    { id: 18, title: "Bölüm 18", source: "https://chisato.cfd/file/tau-video/7791_1_18_720p.mp4", rating: "TBA" },
+    { id: 19, title: "Bölüm 19", source: "https://chisato.cfd/file/tau-video/7791_1_19_720p.mp4", rating: "TBA" },
+    { id: 20, title: "Bölüm 20", source: "https://chisato.cfd/file/tau-video/7791_1_20_720p.mp4", rating: "TBA" },
+    { id: 21, title: "Bölüm 21", source: "https://chisato.cfd/file/tau-video/7791_1_21_720p.mp4", rating: "TBA" },
+    { id: 22, title: "Bölüm 22", source: "https://chisato.cfd/file/tau-video/7791_1_22_720p.mp4", rating: "TBA" },
+    { id: 23, title: "Bölüm 23", source: "https://chisato.cfd/file/tau-video/7791_1_23_720p.mp4", rating: "TBA" },
+    { id: 24, title: "Bölüm 24", source: "https://chisato.cfd/file/tau-video/7791_1_24_720p.mp4", rating: "TBA" },
+    { id: 25, title: "Bölüm 25", source: "https://chisato.cfd/file/tau-video/7791_1_25_720p.mp4", rating: "TBA" },
 ];
 
 // Bleach State Management
