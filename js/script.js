@@ -16,7 +16,7 @@ const animeDatabase = {
         pelinRating: 'TBA'
     },
     'Berserk': {
-        desc: 'Guts, \'Kara Kılıç Ustası\' olarak bilinen eski bir paralı askerdir. İhanete uğradığı eski dostu Griffith ve ona eşlik eden iblislerle dolu bir dünyada intikam arayışına çıkar. Hayatta kalma mücadelesi ve karanlık bir kaderin hikayesi.',
+        desc: 'Midland Krallığı eski güzel günleri arar hale gelmiştir. Ülkenin hiç bir yerinde hiç bir şey eskisi gibi huzurlu ve bereketli değildir. Tüm bu karmaşanın arasında bir silahşör ortaya çıkar ve ülkenin kralını ve taraftarlarını öldüreceğini söyler. Gatts(Guts), insanüstü bir güce ve dev bir kılıca sahip bu silahşör, Griffith önderliğindeki paralı askerler grubu olan "Band of Hawks"a katıldığı dönemi ve sonrasını hatırlamaya başlar.',
         rating: '8.7',
         pelinRating: 'TBA'
     },
@@ -83,19 +83,18 @@ const animeDatabase = {
 };
 
 
-// Berserk Episodes (11 episodes)
+// Berserk Episodes (10 episodes)
 const berserkEpisodes = [
     { id: 1, title: "Bölüm 1: Kara Kılıç Ustası", source: "https://akumaryu-2.asia/file/tau-video/7791_1_1_720p.mp4", rating: "7.7" },
-    { id: "2016_1", title: "2016, 1. bölüm", source: "https://zorami-2.asia/file/tau-video/1f36bd96-6f69-418f-8805-8fe11f9722cc.mp4", rating: "TBA" },
     { id: 2, title: "Bölüm 2: Şahin Tugayı", source: "https://arukane-4.asia/file/tau-video/7791_1_2_720p.mp4", rating: "7.7" },
     { id: 3, title: "Bölüm 3: İlk Savaş", source: "https://inorix-2.asia/file/tau-video/7791_1_3_720p.mp4", rating: "7.8" },
     { id: 4, title: "Bölüm 4: Tanrının Eli", source: "https://akumaryu-2.asia/file/tau-video/7791_1_4_720p.mp4", rating: "7.7" },
     { id: 5, title: "Bölüm 5: Kılıç Rüzgarı", source: "https://kitsurai-3.asia/file/tau-video/7791_1_5_720p.mp4", rating: "7.5" },
-    { id: 6, title: "Bölüm 6: Ölümsüz Zodd", source: "", rating: "8.5" },
-    { id: 7, title: "Bölüm 7: Kılıcın Sahibi", source: "", rating: "7.3" },
-    { id: 8, title: "Bölüm 8: Komplo", source: "", rating: "7.5" },
-    { id: 9, title: "Bölüm 9: Suikast", source: "", rating: "7.7" },
-    { id: 10, title: "Bölüm 10: Soylu Adam", source: "", rating: "8.9" },
+    { id: 6, title: "Bölüm 6: Ölümsüz Zodd", source: "https://grimmjow.icu/file/tau-video/7791_1_6_720p.mp4", rating: "8.5" },
+    { id: 7, title: "Bölüm 7: Kılıcın Sahibi", source: "https://grimmjow.cfd/file/tau-video/7791_1_7_720p.mp4", rating: "7.3" },
+    { id: 8, title: "Bölüm 8: Komplo", source: "https://gojousatoru.icu/file/tau-video/7791_1_8_720p.mp4", rating: "7.5" },
+    { id: 9, title: "Bölüm 9: Suikast", source: "https://gojousatoru.icu/file/tau-video/7791_1_9_720p.mp4", rating: "7.7" },
+    { id: 10, title: "Bölüm 10: Soylu Adam", source: "https://gojousatoru.icu/file/tau-video/7791_1_10_720p.mp4", rating: "8.9" },
 ];
 
 // Bleach State Management
@@ -709,6 +708,7 @@ function renderBerserkEpisodes() {
 const watchlistData = [
     { title: "Attack on Titan", watched: true },
     { title: "Plastic Memories", watched: true },
+    { title: "Berserk", watched: false },
     { title: "Bleach", watched: false },
     { title: "Chainsaw Man", watched: false },
     { title: "Kakegurui", watched: false },
