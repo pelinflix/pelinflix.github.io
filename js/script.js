@@ -18,7 +18,7 @@ const animeDatabase = {
     'Berserk': {
         desc: 'Midland Krallığı eski güzel günleri arar hale gelmiştir. Ülkenin hiç bir yerinde hiç bir şey eskisi gibi huzurlu ve bereketli değildir. Tüm bu karmaşanın arasında bir silahşör ortaya çıkar ve ülkenin kralını ve taraftarlarını öldüreceğini söyler. Gatts(Guts), insanüstü bir güce ve dev bir kılıca sahip bu silahşör, Griffith önderliğindeki paralı askerler grubu olan "Band of Hawks"a katıldığı dönemi ve sonrasını hatırlamaya başlar.',
         rating: '8.7',
-        pelinRating: 'TBA'
+        pelinRating: '7.8'
     },
     'Naruto': {
         desc: 'İçinde mühürlenmiş olan Dokuz Kuyruklu Tilki nedeniyle köylüleri tarafından dışlanan genç ninja Naruto Uzumaki\'nin, köyün lideri olan Hokage olma hayalinin ve kendini kanıtlama çabasının hikayesidir.',
@@ -723,7 +723,7 @@ function renderBerserkEpisodes() {
 const watchlistData = [
     { title: "Attack on Titan", watched: true },
     { title: "Plastic Memories", watched: true },
-    { title: "Berserk", watched: false },
+    { title: "Berserk", watched: true },
     { title: "Bleach", watched: false },
     { title: "Chainsaw Man", watched: false },
     { title: "Kakegurui", watched: false },
