@@ -85,18 +85,18 @@ const animeDatabase = {
 
 // Chainsaw Man Episodes (12 episodes)
 const chainsawManEpisodes = [
-    { id: 1, title: "Bölüm 1", source: "https://inorix-3.asia/file/tau-video/f51a939a-37a2-4a5b-90da-7ebd5d4067ff.mp4", rating: "TBA" },
-    { id: 2, title: "Bölüm 2", source: "https://shurami-4.asia/file/tau-video/38097425-869b-473b-8275-69ad6ec7dc5f.mp4", rating: "TBA" },
-    { id: 3, title: "Bölüm 3", source: "https://pixel-quirk.shop/file/tau-video/7a0760e4-2347-4827-aed8-61d4814c1d57.mp4", rating: "TBA" },
-    { id: 4, title: "Bölüm 4", source: "", rating: "TBA" },
-    { id: 5, title: "Bölüm 5", source: "", rating: "TBA" },
-    { id: 6, title: "Bölüm 6", source: "", rating: "TBA" },
-    { id: 7, title: "Bölüm 7", source: "", rating: "TBA" },
-    { id: 8, title: "Bölüm 8", source: "", rating: "TBA" },
-    { id: 9, title: "Bölüm 9", source: "", rating: "TBA" },
-    { id: 10, title: "Bölüm 10", source: "", rating: "TBA" },
-    { id: 11, title: "Bölüm 11", source: "", rating: "TBA" },
-    { id: 12, title: "Bölüm 12", source: "", rating: "TBA" },
+    { id: 1, title: "Bölüm 1", source: "https://inorix-3.asia/file/tau-video/f51a939a-37a2-4a5b-90da-7ebd5d4067ff.mp4", rating: "8.6" },
+    { id: 2, title: "Bölüm 2", source: "https://shurami-4.asia/file/tau-video/38097425-869b-473b-8275-69ad6ec7dc5f.mp4", rating: "7.9" },
+    { id: 3, title: "Bölüm 3", source: "https://pixel-quirk.shop/file/tau-video/7a0760e4-2347-4827-aed8-61d4814c1d57.mp4", rating: "8.5" },
+    { id: 4, title: "Bölüm 4", source: "", rating: "8.3" },
+    { id: 5, title: "Bölüm 5", source: "", rating: "8.2" },
+    { id: 6, title: "Bölüm 6", source: "", rating: "8.4" },
+    { id: 7, title: "Bölüm 7", source: "", rating: "8.0" },
+    { id: 8, title: "Bölüm 8", source: "", rating: "9.4" },
+    { id: 9, title: "Bölüm 9", source: "", rating: "9.2" },
+    { id: 10, title: "Bölüm 10", source: "", rating: "8.1" },
+    { id: 11, title: "Bölüm 11", source: "", rating: "8.3" },
+    { id: 12, title: "Bölüm 12", source: "", rating: "8.8" },
 ];
 
 // Bleach State Management
