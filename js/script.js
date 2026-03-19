@@ -15,10 +15,10 @@ const animeDatabase = {
         rating: '8.2',
         pelinRating: 'TBA'
     },
-    'Berserk': {
-        desc: 'Midland Krallığı eski güzel günleri arar hale gelmiştir. Ülkenin hiç bir yerinde hiç bir şey eskisi gibi huzurlu ve bereketli değildir. Tüm bu karmaşanın arasında bir silahşör ortaya çıkar ve ülkenin kralını ve taraftarlarını öldüreceğini söyler. Gatts(Guts), insanüstü bir güce ve dev bir kılıca sahip bu silahşör, Griffith önderliğindeki paralı askerler grubu olan "Band of Hawks"a katıldığı dönemi ve sonrasını hatırlamaya başlar.',
-        rating: '8.7',
-        pelinRating: '7.8'
+    'Chainsaw Man': {
+        desc: 'Denji\'nin basit bir rüyası var - mutlu ve huzurlu bir yaşam yaşamak, sevdiği bir kızla vakit geçirmek. Bununla birlikte, Denji Yakuza tarafından ezici borçlarını ödemek için şeytanları öldürmeye zorlandığı için bu gerçeklikten çok uzaktır. Evcil Şeytan Pochita\'yı silah olarak kullanarak, biraz nakit için her şeyi yapmaya hazır.',
+        rating: '8.4',
+        pelinRating: 'TBA'
     },
     'Naruto': {
         desc: 'İçinde mühürlenmiş olan Dokuz Kuyruklu Tilki nedeniyle köylüleri tarafından dışlanan genç ninja Naruto Uzumaki\'nin, köyün lideri olan Hokage olma hayalinin ve kendini kanıtlama çabasının hikayesidir.',
@@ -83,33 +83,20 @@ const animeDatabase = {
 };
 
 
-// Berserk Episodes (25 episodes)
-const berserkEpisodes = [
-    { id: 1, title: "Bölüm 1: Kara Kılıç Ustası", source: "https://akumaryu-2.asia/file/tau-video/7791_1_1_720p.mp4", rating: "7.7" },
-    { id: 2, title: "Bölüm 2: Şahin Tugayı", source: "https://arukane-4.asia/file/tau-video/7791_1_2_720p.mp4", rating: "7.7" },
-    { id: 3, title: "Bölüm 3: İlk Savaş", source: "https://inorix-2.asia/file/tau-video/7791_1_3_720p.mp4", rating: "7.8" },
-    { id: 4, title: "Bölüm 4: Tanrının Eli", source: "https://akumaryu-2.asia/file/tau-video/7791_1_4_720p.mp4", rating: "7.8" },
-    { id: 5, title: "Bölüm 5: Kılıç Rüzgarı", source: "https://kitsurai-3.asia/file/tau-video/7791_1_5_720p.mp4", rating: "7.5" },
-    { id: 6, title: "Bölüm 6: Ölümsüz Zodd", source: "https://grimmjow.icu/file/tau-video/7791_1_6_720p.mp4", rating: "8.6" },
-    { id: 7, title: "Bölüm 7: Kılıcın Sahibi", source: "https://grimmjow.cfd/file/tau-video/7791_1_7_720p.mp4", rating: "7.3" },
-    { id: 8, title: "Bölüm 8: Komplo", source: "https://gojousatoru.icu/file/tau-video/7791_1_8_720p.mp4", rating: "7.5" },
-    { id: 9, title: "Bölüm 9: Suikast", source: "https://gojousatoru.icu/file/tau-video/7791_1_9_720p.mp4", rating: "7.7" },
-    { id: 10, title: "Bölüm 10: Soylu Adam", source: "https://gojousatoru.icu/file/tau-video/7791_1_10_720p.mp4", rating: "9.0" },
-    { id: 11, title: "Bölüm 11: Savaş", source: "https://chisato.cfd/file/tau-video/7791_1_11_720p.mp4", rating: "7.9" },
-    { id: 12, title: "Bölüm 12: Birlikte", source: "https://chisato.cfd/file/tau-video/7791_1_12_720p.mp4", rating: "8.5" },
-    { id: 13, title: "Bölüm 13: Ölüme Hazırlanmış", source: "https://chisato.cfd/file/tau-video/7791_1_13_720p.mp4", rating: "8.4" },
-    { id: 14, title: "Bölüm 14: Bonfire of Dreams", source: "https://chisato.cfd/file/tau-video/7791_1_14_720p.mp4", rating: "8.2" },
-    { id: 15, title: "Bölüm 15: Belirleyici Savaş", source: "https://chisato.cfd/file/tau-video/7791_1_15_720p.mp4", rating: "7.8" },
-    { id: 16, title: "Bölüm 16: Fatih", source: "https://chisato.cfd/file/tau-video/7791_1_16_720p.mp4", rating: "8.3" },
-    { id: 17, title: "Bölüm 17: Zafer Anı", source: "https://chisato.cfd/file/tau-video/7791_1_17_720p.mp4", rating: "7.9" },
-    { id: 18, title: "Bölüm 18: Alevlerin Mezar Taşı", source: "https://chisato.cfd/file/tau-video/7791_1_18_720p.mp4", rating: "8.3" },
-    { id: 19, title: "Bölüm 19: Ayrılık", source: "https://chisato.cfd/file/tau-video/7791_1_19_720p.mp4", rating: "9.0" },
-    { id: 20, title: "Bölüm 20: Kıvılcımlar", source: "https://chisato.cfd/file/tau-video/7791_1_20_720p.mp4", rating: "7.8" },
-    { id: 21, title: "Bölüm 21: İtiraf", source: "https://chisato.cfd/file/tau-video/7791_1_21_720p.mp4", rating: "8.4" },
-    { id: 22, title: "Bölüm 22: Süzülme", source: "https://chisato.cfd/file/tau-video/7791_1_22_720p.mp4", rating: "8.9" },
-    { id: 23, title: "Bölüm 23: Bayram Arifesi", source: "https://chisato.cfd/file/tau-video/7791_1_23_720p.mp4", rating: "8.9" },
-    { id: 24, title: "Bölüm 24: Büyük Tutulma", source: "https://chisato.cfd/file/tau-video/7791_1_24_720p.mp4", rating: "9.2" },
-    { id: 25, title: "Bölüm 25: Sonsuzluk Zamanı", source: "https://chisato.cfd/file/tau-video/7791_1_25_720p.mp4", rating: "9.6" },
+// Chainsaw Man Episodes (12 episodes)
+const chainsawManEpisodes = [
+    { id: 1, title: "Bölüm 1", source: "https://inorix-3.asia/file/tau-video/f51a939a-37a2-4a5b-90da-7ebd5d4067ff.mp4", rating: "TBA" },
+    { id: 2, title: "Bölüm 2", source: "https://shurami-4.asia/file/tau-video/38097425-869b-473b-8275-69ad6ec7dc5f.mp4", rating: "TBA" },
+    { id: 3, title: "Bölüm 3", source: "https://pixel-quirk.shop/file/tau-video/7a0760e4-2347-4827-aed8-61d4814c1d57.mp4", rating: "TBA" },
+    { id: 4, title: "Bölüm 4", source: "", rating: "TBA" },
+    { id: 5, title: "Bölüm 5", source: "", rating: "TBA" },
+    { id: 6, title: "Bölüm 6", source: "", rating: "TBA" },
+    { id: 7, title: "Bölüm 7", source: "", rating: "TBA" },
+    { id: 8, title: "Bölüm 8", source: "", rating: "TBA" },
+    { id: 9, title: "Bölüm 9", source: "", rating: "TBA" },
+    { id: 10, title: "Bölüm 10", source: "", rating: "TBA" },
+    { id: 11, title: "Bölüm 11", source: "", rating: "TBA" },
+    { id: 12, title: "Bölüm 12", source: "", rating: "TBA" },
 ];
 
 // Bleach State Management
@@ -521,7 +508,7 @@ const bleachEpisodes = [
 ];
 
 
-const episodeGridBerserk = document.getElementById('episodeGridBerserk');
+const episodeGridChainsawMan = document.getElementById('episodeGridChainsawMan');
 const episodeGridBleach = document.getElementById('episodeGridBleach');
 const bleachRangeSelector = document.getElementById('bleachRangeSelector');
 const videoModal = document.getElementById('videoModal');
@@ -714,9 +701,9 @@ function renderBleachEpisodes() {
     createEpisodeCards(filtered, episodeGridBleach, "Bleach");
 }
 
-// --- Berserk Specific Functions ---
-function renderBerserkEpisodes() {
-    createEpisodeCards(berserkEpisodes, episodeGridBerserk, 'Berserk');
+// --- Chainsaw Man Specific Functions ---
+function renderChainsawManEpisodes() {
+    createEpisodeCards(chainsawManEpisodes, episodeGridChainsawMan, 'Chainsaw Man');
 }
 
 // --- Watchlist Management ---
@@ -761,7 +748,7 @@ function initApp() {
     // Skip Intro and Resume Playback Logic
     plyrInstance.on('timeupdate', event => {
         const currentTime = plyrInstance.currentTime;
-        if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Berserk') {
+        if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Chainsaw Man') {
             skipIntroBtn.classList.add('show');
         } else {
             skipIntroBtn.classList.remove('show');
@@ -802,7 +789,7 @@ function initApp() {
 
     renderBleachControls();
     renderBleachEpisodes();
-    renderBerserkEpisodes();
+    renderChainsawManEpisodes();
 
     watchlistItems.innerHTML = '';
     watchlistData.forEach(item => {
