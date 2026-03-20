@@ -15,6 +15,11 @@ const animeDatabase = {
         rating: '8.2',
         pelinRating: 'TBA'
     },
+    'Berserk': {
+        desc: 'Midland Krallığı eski güzel günleri arar hale gelmiştir. Ülkenin hiç bir yerinde hiç bir şey eskisi gibi huzurlu ve bereketli değildir. Tüm bu karmaşanın arasında bir silahşör ortaya çıkar ve ülkenin kralını ve taraftarlarını öldüreceğini söyler. Gatts(Guts), insanüstü bir güce ve dev bir kılıca sahip bu silahşör, Griffith önderliğindeki paralı askerler grubu olan "Band of Hawks"a katıldığı dönemi ve sonrasını hatırlamaya başlar.',
+        rating: '8.7',
+        pelinRating: '7.8'
+    },
     'Chainsaw Man': {
         desc: 'Denji\'nin basit bir rüyası var - mutlu ve huzurlu bir yaşam yaşamak, sevdiği bir kızla vakit geçirmek. Bununla birlikte, Denji Yakuza tarafından ezici borçlarını ödemek için şeytanları öldürmeye zorlandığı için bu gerçeklikten çok uzaktır. Evcil Şeytan Pochita\'yı silah olarak kullanarak, biraz nakit için her şeyi yapmaya hazır.',
         rating: '8.4',
@@ -94,9 +99,9 @@ const chainsawManEpisodes = [
     { id: 7, title: "Bölüm 7", source: "https://vibe-crafted.shop/file/tau-video/31cdf570-3307-40aa-b49c-a7b424f05c73.mp4", rating: "8.0" },
     { id: 8, title: "Bölüm 8", source: "https://chisato.cfd/file/tau-video/fed4935f-9a76-46e8-9393-81e24ea5b99f.mp4", rating: "9.4" },
     { id: 9, title: "Bölüm 9", source: "https://grimmjow.cfd/file/tau-video/ad6f13f2-a4d9-4328-80c6-f3106c6ff370.mp4", rating: "9.2" },
-    { id: 10, title: "Bölüm 10", source: "", rating: "8.1" },
-    { id: 11, title: "Bölüm 11", source: "", rating: "8.3" },
-    { id: 12, title: "Bölüm 12", source: "", rating: "8.8" },
+    { id: 10, title: "Bölüm 10", source: "https://nozume-1.asia/file/tau-video/71a306f2-2d0e-4175-a206-03161f449364.mp4", rating: "8.1" },
+    { id: 11, title: "Bölüm 11", source: "https://nicorobin.icu/file/tau-video/7e168139-75bc-43c3-92bb-b831d5bd3fd8.mp4", rating: "8.3" },
+    { id: 12, title: "Bölüm 12", source: "https://misakina.asia/file/tau-video/239d1c22-66cf-4e37-92b1-21cb484c4fb8.mp4", rating: "8.8" },
 ];
 
 // Bleach State Management
