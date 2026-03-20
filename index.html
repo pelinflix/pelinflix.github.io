@@ -22,8 +22,7 @@
             <img src="https://fontmeme.com/permalink/260218/df7d552c.png" alt="PelinopTV Logo" class="logo-img">
         </div>
         <nav>
-            <button class="nav-link" onclick="switchSection('chainsawman', this)">Chainsaw Man</button>
-            <button class="nav-link" onclick="switchSection('bleach', this)">Bleach</button>
+            <button class="nav-link" onclick="switchSection('categories', this)">Kategoriler</button>
             <button class="nav-link" onclick="switchSection('watchlist', this)">İzlenecekler</button>
         </nav>
     </header>
@@ -41,6 +40,13 @@
             </div>
         </section>
 
+        <!-- Categories Section -->
+        <section id="categories" class="section">
+            <div class="anime-header" style="margin-bottom: 30px;">
+                <h1>Kategoriler</h1>
+            </div>
+            <div class="categories-grid" id="categoriesGrid"></div>
+        </section>
 
 
         <!-- Chainsaw Man Section -->
@@ -80,10 +86,10 @@
         </section>
 
 
-        <!-- Bleach Section -->
-        <section id="bleach" class="section">
+        <!-- Kakegurui Section -->
+        <section id="kakegurui" class="section">
             <div class="anime-header">
-                <h1>Bleach (2004)</h1>
+                <h1>Kakegurui (2017)</h1>
             </div>
 
             <div class="info-card">
@@ -97,13 +103,11 @@
                     Hakkında
                 </div>
                 <p class="info-description">
-                    Guts, 'Kara Kılıç Ustası' olarak bilinen eski bir paralı askerdir. İhanete uğradığı eski dostu
-                    Griffith ve ona eşlik eden iblislerle dolu bir dünyada intikam arayışına çıkar. Hayatta kalma
-                    mücadelesi ve karanlık bir kaderin hikayesi.
+                    Hyakkaou Akademisi, çok farklı bir müfredata sahip ayrıcalıklı bir kurumdur. Zenginler içerisinde bile zengin olduğunuzda sizi öne çıkaracak şey kitaplar ya da atletik yetenekler değildir. Rakibin aklından geçenleri anlamak ve uzlaşma sanatıdır. Bu becerileri sivriltmenin ise kumardan daha iyi bir yolu yoktur. İşte bu sebeple Hyakkaou Akademisi'nde kazananlar krallar gibi yaşarken kaybedenlerin canına okunur. Ne var ki okula Yumeko Jabami'nin katılması, herkese gerçek kumarın ne olduğunu öğretecektir.
                 </p>
                 <div class="info-meta">
                     <span class="rating-badge">IMDb</span>
-                    <span class="rating-value">8.2 / 10</span>
+                    <span class="rating-value">7.3 / 10</span>
                     <span class="rating-divider">|</span>
                     <span class="rating-badge pelin-badge">Pelin'in Notu</span>
                     <span class="rating-value"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e50914"
@@ -115,19 +119,43 @@
                 </div>
             </div>
 
-            <div class="episode-controls">
-                <select id="bleachSeasonSelect" class="season-select" onchange="handleBleachSeasonChange(this.value)">
-                    <option value="1">1-100</option>
-                    <option value="2">100-200</option>
-                    <option value="3">200-300</option>
-                    <option value="4">300-400</option>
-                </select>
-                <div id="bleachRangeSelector" class="range-selector">
-                    <!-- Ranges populated by JS -->
+            <div class="episode-grid" id="episodeGridKakegurui"></div>
+        </section>
+
+        <!-- Death Parade Section -->
+        <section id="deathparade" class="section">
+            <div class="anime-header">
+                <h1>Death Parade (2015)</h1>
+            </div>
+
+            <div class="info-card">
+                <div class="info-title">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
+                        <path d="M12 8v4"></path>
+                        <path d="M12 16h.01"></path>
+                    </svg>
+                    Hakkında
+                </div>
+                <p class="info-description">
+                    Öldükten sonra insanlar ya cennete gider ya da cehenneme. Fakat nedense, öldükleri an, beyaz saçlı gizemli Decim’in bulunduğu bir bara, Quindecim’e gelirler. Decim, Ölüm Oyunları ile onlara meydan okur ki bunlar, hayatlarını riske attıkları ve gerçek yüzlerini gösterdikleri oyunlardır. Decim de kimin kazanıp kimin kaybettiğine, kimin yaşayıp kimin öleceğine hakemlik yapan nihai bir yargıcıdır.
+                </p>
+                <div class="info-meta">
+                    <span class="rating-badge">IMDb</span>
+                    <span class="rating-value">7.8 / 10</span>
+                    <span class="rating-divider">|</span>
+                    <span class="rating-badge pelin-badge">Pelin'in Notu</span>
+                    <span class="rating-value"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e50914"
+                            stroke="#e50914" stroke-width="1" style="vertical-align: -2px; margin-right: 4px;">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                            </polygon>
+                        </svg>TBA / 10</span>
                 </div>
             </div>
 
-            <div class="episode-grid" id="episodeGridBleach"></div>
+            <div class="episode-grid" id="episodeGridDeathParade"></div>
         </section>
 
         <!-- İzlenecekler Section -->
