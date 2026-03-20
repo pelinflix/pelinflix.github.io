@@ -23,6 +23,11 @@ const animeDatabase = {
     'Chainsaw Man': {
         desc: 'Denji\'nin basit bir rüyası var - mutlu ve huzurlu bir yaşam yaşamak, sevdiği bir kızla vakit geçirmek. Bununla birlikte, Denji Yakuza tarafından ezici borçlarını ödemek için şeytanları öldürmeye zorlandığı için bu gerçeklikten çok uzaktır. Evcil Şeytan Pochita\'yı silah olarak kullanarak, biraz nakit için her şeyi yapmaya hazır.',
         rating: '8.4',
+        pelinRating: '9'
+    },
+    'Chainsaw Man - The Movie: Reze Arc': {
+        desc: "Chainsaw Man'in 1.Sezonunun devamı olan sinema filmi. Hayallerinin kadını Makima ile randevusundan sonra Denji, yağmurdan korunmak için bir kafeye sığınır. Orada, kafede çalışan Reze adında bir kızla tanışır.",
+        rating: '8.3',
         pelinRating: 'TBA'
     },
     'Naruto': {
@@ -114,6 +119,10 @@ const chainsawManEpisodes = [
     { id: 12, title: "Bölüm 12", source: "https://misakina.asia/file/tau-video/239d1c22-66cf-4e37-92b1-21cb484c4fb8.mp4", rating: "8.8" },
 ];
 
+const chainsawManRezeEpisodes = [
+    { id: 1, title: "Film", source: "https://irtau1.online/a2bd758f-70c1-4706-9a81-6d4eeecfe3d5.mp4", rating: "" }
+];
+
 const kakeguruiRatings = [
     "7.5", "7.6", "7.5", "7.4", "7.7", "7.3", "7.5", "6.9", "7.0", "7.4", "8.2", "7.7",
     "7.1", "7.3", "7.2", "7.7", "6.6", "6.5", "7.1", "7.5", "7.0", "7.8", "7.0", "6.8"
@@ -132,9 +141,18 @@ const deathParadeEpisodes = Array.from({ length: 12 }, (_, i) => ({
     rating: "TBA"
 }));
 
+const hellsParadiseEpisodes = Array.from({ length: 25 }, (_, i) => ({
+    id: i + 1,
+    title: `Bölüm ${i + 1}`,
+    source: "",
+    rating: "TBA"
+}));
+
 const episodeGridChainsawMan = document.getElementById('episodeGridChainsawMan');
+const episodeGridChainsawManReze = document.getElementById('episodeGridChainsawManReze');
 const episodeGridKakegurui = document.getElementById('episodeGridKakegurui');
 const episodeGridDeathParade = document.getElementById('episodeGridDeathParade');
+const episodeGridHellsParadise = document.getElementById('episodeGridHellsParadise');
 const videoModal = document.getElementById('videoModal');
 const infoModal = document.getElementById('infoModal');
 const videoPlayer = document.getElementById('player');
@@ -207,9 +225,10 @@ function createEpisodeCards(episodes, gridElement, animeName) {
             </div>
             <div class="episode-info">
                 <div class="episode-title">${ep.title}</div>
+                ${ep.rating ? `
                 <div class="ep-rating-box">
-                    EP Rate: <strong>${ep.rating ? ep.rating : 'TBA'} / 10</strong>
-                </div>
+                    EP Rate: <strong>${ep.rating} / 10</strong>
+                </div>` : ''}
             </div>
         `;
 
@@ -292,6 +311,10 @@ function renderChainsawManEpisodes() {
     createEpisodeCards(chainsawManEpisodes, episodeGridChainsawMan, 'Chainsaw Man');
 }
 
+function renderChainsawManRezeEpisodes() {
+    createEpisodeCards(chainsawManRezeEpisodes, episodeGridChainsawManReze, 'Chainsaw Man - The Movie: Reze Arc');
+}
+
 function renderKakeguruiEpisodes() {
     createEpisodeCards(kakeguruiEpisodes, episodeGridKakegurui, 'Kakegurui');
 }
@@ -300,12 +323,16 @@ function renderDeathParadeEpisodes() {
     createEpisodeCards(deathParadeEpisodes, episodeGridDeathParade, 'Death Parade');
 }
 
+function renderHellsParadiseEpisodes() {
+    createEpisodeCards(hellsParadiseEpisodes, episodeGridHellsParadise, "Hell's Paradise");
+}
+
 // --- Watchlist Management ---
 const watchlistData = [
     { title: "Attack on Titan", watched: true },
     { title: "Plastic Memories", watched: true },
     { title: "Berserk", watched: true },
-    { title: "Chainsaw Man", watched: false },
+    { title: "Chainsaw Man", watched: true },
     { title: "Kakegurui", watched: false },
     { title: "Death Parade", watched: false },
     { title: "Hell's Paradise", watched: false },
@@ -338,6 +365,12 @@ const categoryList = [
         id: "chainsawman",
         cover: "https://m.media-amazon.com/images/M/MV5BZGY2ZTM2MWMtNzA2OS00ZjJlLWIwZTMtMDBhN2EwYjZjZjEyXkEyXkFqcGc@._V1_FMjpg_UX1064_.jpg",
         genre: "Aksiyon & Macera / Fantezi"
+    },
+    {
+        title: "Chainsaw Man Reze Arc",
+        id: "chainsawmanreze",
+        cover: "https://image.tmdb.org/t/p/original/xdzLBZjCVSEsic7m7nJc4jNJZVW.jpg",
+        genre: "Movie / Aksiyon"
     },
     {
         title: "Kakegurui",
@@ -389,7 +422,7 @@ function initApp() {
     // Skip Intro and Resume Playback Logic
     plyrInstance.on('timeupdate', event => {
         const currentTime = plyrInstance.currentTime;
-        if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Chainsaw Man') {
+        if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Chainsaw Man' && currentAnimeName !== 'Chainsaw Man - The Movie: Reze Arc') {
             skipIntroBtn.classList.add('show');
         } else {
             skipIntroBtn.classList.remove('show');
@@ -428,8 +461,10 @@ function initApp() {
         skipIntroBtn.classList.remove('show');
     });
     renderChainsawManEpisodes();
+    renderChainsawManRezeEpisodes();
     renderKakeguruiEpisodes();
     renderDeathParadeEpisodes();
+    renderHellsParadiseEpisodes();
 
     watchlistItems.innerHTML = '';
     watchlistData.forEach(item => {
