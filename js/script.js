@@ -123,30 +123,73 @@ const chainsawManRezeEpisodes = [
     { id: 1, title: "Film", source: "https://irtau1.online/a2bd758f-70c1-4706-9a81-6d4eeecfe3d5.mp4", rating: "" }
 ];
 
-const kakeguruiRatings = [
-    "7.5", "7.6", "7.5", "7.4", "7.7", "7.3", "7.5", "6.9", "7.0", "7.4", "8.2", "7.7",
-    "7.1", "7.3", "7.2", "7.7", "6.6", "6.5", "7.1", "7.5", "7.0", "7.8", "7.0", "6.8"
+const kakeguruiEpisodes = [
+    { id: 1, title: "Bölüm 1", source: "https://kiryuuin.icu/file/tau-video/8f9db481-3cc8-4839-9d69-8e6daabadc74.mp4", rating: "7.5" },
+    { id: 2, title: "Bölüm 2", source: "https://nicorobin.icu/file/tau-video/829d3b2c-5db9-44d8-968c-3d5bdf6b7f7d.mp4", rating: "7.6" },
+    { id: 3, title: "Bölüm 3", source: "https://nezukami.asia/file/tau-video/9a4fe654-42eb-47f8-8886-cf8f1c1b058c.mp4", rating: "7.5" },
+    { id: 4, title: "Bölüm 4", source: "https://kyanori-2.asia/file/tau-video/ebf7a16b-5455-40bc-9a6f-30e7e4aba1db.mp4", rating: "7.4" },
+    { id: 5, title: "Bölüm 5", source: "https://kitsurai-3.asia/file/tau-video/74066461-a170-4f8f-ac4d-e341a4502186.mp4", rating: "7.7" },
+    { id: 6, title: "Bölüm 6", source: "https://shurami-4.asia/file/tau-video/51adcb14-ad02-4b46-be0e-36b033742c39.mp4", rating: "7.3" },
+    { id: 7, title: "Bölüm 7", source: "https://yhwach.cfd/file/tau-video/e8553840-ca57-4ba8-9a7e-94dddb702650.mp4", rating: "7.5" },
+    { id: 8, title: "Bölüm 8", source: "https://yasutorasado.cyou/file/tau-video/1729d5d2-f0ac-43c8-bf31-db767c7d882b.mp4", rating: "6.9" },
+    { id: 9, title: "Bölüm 9", source: "https://inorix-3.asia/file/tau-video/1f686693-33c6-4bb9-9d1c-a17a3d684863.mp4", rating: "7.0" },
+    { id: 10, title: "Bölüm 10", source: "https://akumaryu-2.asia/file/tau-video/477f57be-8349-4c41-886f-6e9358b18dba.mp4", rating: "7.4" },
+    { id: 11, title: "Bölüm 11", source: "https://zappy-net.store/file/tau-video/472cff68-04d5-45d1-8404-09467e82a0c9.mp4", rating: "8.2" },
+    { id: 12, title: "Bölüm 12", source: "https://zappy-net.shop/file/tau-video/54a54890-f31b-47e4-89c7-8296a27d883e.mp4", rating: "7.7" },
+    { id: 13, title: "Bölüm 13", source: "", rating: "7.1" },
+    { id: 14, title: "Bölüm 14", source: "", rating: "7.3" },
+    { id: 15, title: "Bölüm 15", source: "", rating: "7.2" },
+    { id: 16, title: "Bölüm 16", source: "", rating: "7.7" },
+    { id: 17, title: "Bölüm 17", source: "", rating: "6.6" },
+    { id: 18, title: "Bölüm 18", source: "", rating: "6.5" },
+    { id: 19, title: "Bölüm 19", source: "", rating: "7.1" },
+    { id: 20, title: "Bölüm 20", source: "", rating: "7.5" },
+    { id: 21, title: "Bölüm 21", source: "", rating: "7.0" },
+    { id: 22, title: "Bölüm 22", source: "", rating: "7.8" },
+    { id: 23, title: "Bölüm 23", source: "", rating: "7.0" },
+    { id: 24, title: "Bölüm 24", source: "", rating: "6.8" }
 ];
-const kakeguruiEpisodes = kakeguruiRatings.map((rating, i) => ({
-    id: i + 1,
-    title: `Bölüm ${i + 1}`,
-    source: "",
-    rating: rating
-}));
 
-const deathParadeEpisodes = Array.from({ length: 12 }, (_, i) => ({
-    id: i + 1,
-    title: `Bölüm ${i + 1}`,
-    source: "",
-    rating: "TBA"
-}));
+const deathParadeEpisodes = [
+    { id: 1, title: "Bölüm 1", source: "", rating: "8.3" },
+    { id: 2, title: "Bölüm 2", source: "", rating: "7.5" },
+    { id: 3, title: "Bölüm 3", source: "", rating: "8.4" },
+    { id: 4, title: "Bölüm 4", source: "", rating: "7.9" },
+    { id: 5, title: "Bölüm 5", source: "", rating: "7.1" },
+    { id: 6, title: "Bölüm 6", source: "", rating: "7.6" },
+    { id: 7, title: "Bölüm 7", source: "", rating: "7.2" },
+    { id: 8, title: "Bölüm 8", source: "", rating: "8.0" },
+    { id: 9, title: "Bölüm 9", source: "", rating: "9.0" },
+    { id: 10, title: "Bölüm 10", source: "", rating: "8.0" },
+    { id: 11, title: "Bölüm 11", source: "", rating: "8.7" },
+    { id: 12, title: "Bölüm 12", source: "", rating: "9.1" }
+];
 
-const hellsParadiseEpisodes = Array.from({ length: 25 }, (_, i) => ({
-    id: i + 1,
-    title: `Bölüm ${i + 1}`,
-    source: "",
-    rating: "TBA"
-}));
+const hellsParadiseEpisodes = [
+    { id: 1, title: "Bölüm 1", source: "", rating: "8.2" },
+    { id: 2, title: "Bölüm 2", source: "", rating: "8.3" },
+    { id: 3, title: "Bölüm 3", source: "", rating: "8.5" },
+    { id: 4, title: "Bölüm 4", source: "", rating: "7.9" },
+    { id: 5, title: "Bölüm 5", source: "", rating: "7.6" },
+    { id: 6, title: "Bölüm 6", source: "", rating: "8.1" },
+    { id: 7, title: "Bölüm 7", source: "", rating: "7.8" },
+    { id: 8, title: "Bölüm 8", source: "", rating: "9.0" },
+    { id: 9, title: "Bölüm 9", source: "", rating: "9.0" },
+    { id: 10, title: "Bölüm 10", source: "", rating: "7.8" },
+    { id: 11, title: "Bölüm 11", source: "", rating: "8.6" },
+    { id: 12, title: "Bölüm 12", source: "", rating: "8.9" },
+    { id: 13, title: "Bölüm 13", source: "", rating: "8.8" },
+    { id: 14, title: "Bölüm 14", source: "", rating: "8.1" },
+    { id: 15, title: "Bölüm 15", source: "", rating: "8.5" },
+    { id: 16, title: "Bölüm 16", source: "", rating: "8.4" },
+    { id: 17, title: "Bölüm 17", source: "", rating: "8.4" },
+    { id: 18, title: "Bölüm 18", source: "", rating: "8.2" },
+    { id: 19, title: "Bölüm 19", source: "", rating: "9.0" },
+    { id: 20, title: "Bölüm 20", source: "", rating: "9.3" },
+    { id: 21, title: "Bölüm 21", source: "", rating: "9.2" },
+    { id: 22, title: "Bölüm 22", source: "", rating: "8.8" },
+    { id: 23, title: "Bölüm 23", source: "", rating: "8.9" }
+];
 
 const episodeGridChainsawMan = document.getElementById('episodeGridChainsawMan');
 const episodeGridChainsawManReze = document.getElementById('episodeGridChainsawManReze');
@@ -421,7 +464,14 @@ function initApp() {
 
     // Skip Intro and Resume Playback Logic
     plyrInstance.on('timeupdate', event => {
-        const currentTime = plyrInstance.currentTime;
+        let currentTime = plyrInstance.currentTime;
+
+        // Auto-skip specific intro segment for Kakegurui
+        if (currentAnimeName === 'Kakegurui' && currentTime >= 3 && currentTime < 11) {
+            plyrInstance.currentTime = 11;
+            currentTime = 11;
+        }
+
         if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Chainsaw Man' && currentAnimeName !== 'Chainsaw Man - The Movie: Reze Arc') {
             skipIntroBtn.classList.add('show');
         } else {
@@ -497,14 +547,10 @@ function initApp() {
     renderCategories();
 }
 
-function switchSection(sectionId, element) {
+function applySection(sectionId) {
     document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-    if (element) {
-        element.classList.add('active');
-    } else {
-        const matchingLink = document.querySelector(`.nav-link[onclick*="switchSection('${sectionId}'"]`);
-        if (matchingLink) matchingLink.classList.add('active');
-    }
+    const matchingLink = document.querySelector(`.nav-link[onclick*="switchSection('${sectionId}'"]`);
+    if (matchingLink) matchingLink.classList.add('active');
 
     document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
 
@@ -519,6 +565,21 @@ function switchSection(sectionId, element) {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+function switchSection(sectionId, element) {
+    // Push new hash state only if it differs from current
+    const newHash = '#' + sectionId;
+    if (window.location.hash !== newHash) {
+        history.pushState({ sectionId }, '', newHash);
+    }
+    applySection(sectionId);
+}
+
+// Back/forward browser button support
+window.onpopstate = (event) => {
+    const sectionId = event.state?.sectionId || 'home';
+    applySection(sectionId);
+};
 
 function showAnimeInfo(name) {
     const data = animeDatabase[name];
@@ -619,4 +680,40 @@ window.onscroll = () => {
     else header.classList.remove('scrolled');
 };
 
-document.addEventListener('DOMContentLoaded', initApp);
+// --- Smooth Infinite Poster Scroll (JS-based, no CSS jump) ---
+function initPosterScroll() {
+    const cols = Array.from(document.querySelectorAll('.poster-col'));
+    if (!cols.length) return;
+
+    // px moved per frame — different speed per column for organic feel
+    const speeds = [0.15, 0.10, 0.20, 0.12, 0.18];
+    const positions = new Array(cols.length).fill(0);
+
+    function tick() {
+        cols.forEach((col, i) => {
+            positions[i] -= speeds[i];
+            const halfH = col.scrollHeight / 2;
+            // Silent reset: at -halfH the content is identical to 0
+            if (-positions[i] >= halfH) positions[i] = 0;
+            col.style.transform = `translateY(${positions[i]}px)`;
+        });
+        requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(tick);
+}
+
+// Start after all images are loaded so scrollHeight is accurate
+window.addEventListener('load', initPosterScroll);
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    initApp();
+
+    // Restore section from URL hash on page load/refresh
+    const hash = window.location.hash.replace('#', '');
+    const startSection = hash && document.getElementById(hash) ? hash : 'home';
+    // Replace the initial state so popstate works correctly
+    history.replaceState({ sectionId: startSection }, '', '#' + startSection);
+    applySection(startSection);
+});
