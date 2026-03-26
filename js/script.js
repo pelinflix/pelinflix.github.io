@@ -23,7 +23,7 @@ const animeDatabase = {
     'Chainsaw Man': {
         desc: 'Denji\'nin basit bir rüyası var - mutlu ve huzurlu bir yaşam yaşamak, sevdiği bir kızla vakit geçirmek. Bununla birlikte, Denji Yakuza tarafından ezici borçlarını ödemek için şeytanları öldürmeye zorlandığı için bu gerçeklikten çok uzaktır. Evcil Şeytan Pochita\'yı silah olarak kullanarak, biraz nakit için her şeyi yapmaya hazır.',
         rating: '8.4',
-        pelinRating: '9'
+        pelinRating: '8.6'
     },
     'Chainsaw Man - The Movie: Reze Arc': {
         desc: "Chainsaw Man'in 1.Sezonunun devamı olan sinema filmi. Hayallerinin kadını Makima ile randevusundan sonra Denji, yağmurdan korunmak için bir kafeye sığınır. Orada, kafede çalışan Reze adında bir kızla tanışır.",
