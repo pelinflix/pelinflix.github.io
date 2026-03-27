@@ -128,7 +128,7 @@ const kakeguruiEpisodes = [
     { id: 2, title: "Bölüm 2", source: "https://nicorobin.icu/file/tau-video/829d3b2c-5db9-44d8-968c-3d5bdf6b7f7d.mp4", rating: "7.6" },
     { id: 3, title: "Bölüm 3", source: "https://nezukami.asia/file/tau-video/9a4fe654-42eb-47f8-8886-cf8f1c1b058c.mp4", rating: "7.5" },
     { id: 4, title: "Bölüm 4", source: "https://kyanori-2.asia/file/tau-video/ebf7a16b-5455-40bc-9a6f-30e7e4aba1db.mp4", rating: "7.4" },
-    { id: 5, title: "Bölüm 5", source: "https://kitsurai-3.asia/file/tau-video/74066461-a170-4f8f-ac4d-e341a4502186.mp4", rating: "7.7" },
+    { id: 5, title: "Bölüm 5", source: "https://yorugen-4.asia/file/tau-video/74_1_5_1080p.mp4", rating: "7.7" },
     { id: 6, title: "Bölüm 6", source: "https://shurami-4.asia/file/tau-video/51adcb14-ad02-4b46-be0e-36b033742c39.mp4", rating: "7.3" },
     { id: 7, title: "Bölüm 7", source: "https://yhwach.cfd/file/tau-video/e8553840-ca57-4ba8-9a7e-94dddb702650.mp4", rating: "7.5" },
     { id: 8, title: "Bölüm 8", source: "https://yasutorasado.cyou/file/tau-video/1729d5d2-f0ac-43c8-bf31-db767c7d882b.mp4", rating: "6.9" },
