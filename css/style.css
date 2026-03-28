@@ -176,20 +176,6 @@ main {
     text-transform: uppercase;
 }
 
-.landing-creator {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-    font-weight: 300;
-    margin-top: 15px;
-    letter-spacing: 1px;
-}
-
-.creator-name {
-    color: var(--accent-color);
-    font-weight: 500;
-    text-shadow: 0 0 12px rgba(229, 9, 20, 0.8);
-}
-
 .neon-pelinop {
     color: var(--neon-purple);
     text-decoration: none;
