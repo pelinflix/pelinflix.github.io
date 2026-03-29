@@ -191,12 +191,11 @@ main {
 }
 
 .landing-credit {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     color: var(--text-secondary);
-    opacity: 0.35;
+    opacity: 0.55;
     margin-top: 1.2rem;
     letter-spacing: 2px;
-    text-transform: uppercase;
     font-weight: 300;
 }
 
