@@ -190,15 +190,19 @@ main {
     color: #d866ff;
 }
 
-.landing-credit {
+.landing-footer-credit {
+    position: absolute;
+    bottom: -4.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #ffffff;
     font-size: 0.85rem;
-    color: var(--text-secondary);
-    opacity: 0.55;
-    margin-top: 1.2rem;
-    letter-spacing: 2px;
-    font-weight: 300;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    text-align: center;
+    white-space: nowrap;
+    opacity: 0.6;
 }
-
 
 
 /* --- Info Card Styles --- */
