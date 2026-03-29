@@ -62,6 +62,13 @@ function createEpisodeCards(episodes, gridElement, animeName) {
         card.className = `episode-card ${isWatched ? 'watched' : ''}`;
         card.setAttribute('data-anime', animeName);
         card.setAttribute('data-episode-id', episodeId);
+        
+        if (ep.season) {
+            card.setAttribute('data-season', ep.season);
+            if (String(ep.season) !== "1") {
+                card.style.display = 'none';
+            }
+        }
 
         card.innerHTML = `
             <div class="thumbnail-container">
@@ -159,6 +166,7 @@ function removeWatchedEpisode(animeName, episodeId) {
 // --- Anime Episode Rendering ---
 function renderAllEpisodes(episodesList) {
     const animeMapping = [
+        { episodes: episodesList.attackOnTitan, gridId: 'episodeGridAttackOnTitan', animeName: 'Attack on Titan' },
         { episodes: episodesList.chainsawMan, gridId: 'episodeGridChainsawMan', animeName: 'Chainsaw Man' },
         { episodes: episodesList.chainsawManReze, gridId: 'episodeGridChainsawManReze', animeName: 'Chainsaw Man - The Movie: Reze Arc' },
         { episodes: episodesList.kakegurui, gridId: 'episodeGridKakegurui', animeName: 'Kakegurui' },
@@ -178,6 +186,7 @@ function renderAllEpisodes(episodesList) {
 // --- Watchlist Management ---
 function getGridIdObj(id) {
     const map = {
+        'attackontitan': { gridId: 'episodeGridAttackOnTitan', title: 'Attack on Titan', titleSuffix: '', seasons: [1, 2, 3, 4] },
         'chainsawman': { gridId: 'episodeGridChainsawMan', title: 'Chainsaw Man', titleSuffix: ' (2022)' },
         'chainsawmanreze': { gridId: 'episodeGridChainsawManReze', title: 'Chainsaw Man - The Movie: Reze Arc', titleSuffix: '' },
         'kakegurui': { gridId: 'episodeGridKakegurui', title: 'Kakegurui', titleSuffix: ' (2017)' },
@@ -238,12 +247,34 @@ function renderAnimeSections(categoryList, animeDatabase) {
                 </div>
             </div>
 
+            ${mapData.seasons ? `
+            <div class="episode-controls" style="margin-bottom: 20px;">
+                <select class="season-select" onchange="filterSeason('${mapData.gridId}', this.value)">
+                    ${mapData.seasons.map(s => `<option value="${s}">${s}. Sezon</option>`).join('')}
+                </select>
+            </div>
+            ` : ''}
+
             <div class="episode-grid" id="${mapData.gridId}"></div>
         `;
 
         container.appendChild(section);
     });
 }
+
+// Global filter function
+window.filterSeason = function(gridId, seasonNum) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.episode-card');
+    cards.forEach(card => {
+        if (card.getAttribute('data-season') === String(seasonNum)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+};
 
 // --- Categories Management ---
 function renderCategories(categoryList) {
