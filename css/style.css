@@ -1005,3 +1005,123 @@ main {
     position: relative;
     z-index: 2;
 }
+
+/* --- Expandable Search Box --- */
+.watchlist-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.watchlist-header-row .watchlist-title {
+    margin-bottom: 0;
+}
+
+.expandable-search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 38px;
+}
+
+.search-btn {
+    position: absolute;
+    left: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: transparent;
+    border: 1px solid transparent;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-pill {
+    position: relative;
+    height: 38px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    width: 130px;
+    margin-left: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.search-label {
+    position: absolute;
+    left: 40px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    transition: opacity 0.3s;
+    pointer-events: none;
+    font-size: 0.95rem;
+}
+
+.search-pill input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    height: 100%;
+    padding-left: 10px;
+    padding-right: 20px;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    opacity: 0;
+    pointer-events: none;
+    font-family: inherit;
+    font-weight: 500;
+}
+
+.search-pill input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Expanded State */
+.expandable-search.active .search-btn {
+    opacity: 0;
+    transform: scale(0.5);
+    pointer-events: none;
+}
+
+.expandable-search.active .search-pill {
+    margin-left: 0;
+    width: 200px;
+    cursor: text;
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.expandable-search.active .search-label {
+    opacity: 0;
+}
+
+.expandable-search.active .search-pill input {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.expandable-search:not(.active):hover .search-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.anime-ordered-list.is-searching {
+    counter-reset: none;
+}
+
+.anime-ordered-list.is-searching li::before {
+    content: attr(data-original-index);
+}

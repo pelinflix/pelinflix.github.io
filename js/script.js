@@ -330,13 +330,14 @@ async function initApp() {
     renderAllEpisodes(episodes);
 
     watchlistItems.innerHTML = '';
-    watchlistData.forEach(item => {
+    watchlistData.forEach((item, index) => {
         const name = item.title;
         const isWatched = item.watched;
 
         const li = document.createElement('li');
         li.className = isWatched ? 'completed' : '';
         li.setAttribute('data-anime-name', name);
+        li.setAttribute('data-original-index', index + 1);
 
         li.innerHTML = `
             <span class="anime-name">${name}</span>
@@ -358,6 +359,45 @@ async function initApp() {
     });
 
     renderCategories(categoryList);
+
+    // --- Watchlist Search Logic ---
+    const searchContainer = document.getElementById('watchlistSearchContainer');
+    const searchInput = document.getElementById('watchlistSearchInput');
+
+    if (searchContainer && searchInput && watchlistItems) {
+        searchContainer.addEventListener('click', () => {
+            if (!searchContainer.classList.contains('active')) {
+                searchContainer.classList.add('active');
+                searchInput.focus();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!searchContainer.contains(e.target) && searchInput.value.trim() === '') {
+                searchContainer.classList.remove('active');
+            }
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const term = e.target.value.toLowerCase().trim();
+            const items = watchlistItems.querySelectorAll('li');
+
+            if (term.length > 0) {
+                watchlistItems.classList.add('is-searching');
+            } else {
+                watchlistItems.classList.remove('is-searching');
+            }
+
+            items.forEach(li => {
+                const animeName = li.getAttribute('data-anime-name').toLowerCase();
+                if (animeName.includes(term)) {
+                    li.style.display = '';
+                } else {
+                    li.style.display = 'none';
+                }
+            });
+        });
+    }
 
     // Restore section from URL hash after dynamic sections exist
     const hash = window.location.hash.replace('#', '');
