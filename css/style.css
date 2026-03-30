@@ -190,18 +190,55 @@ main {
     color: #d866ff;
 }
 
-.landing-footer-credit {
-    position: absolute;
-    bottom: -4.5rem;
-    left: 50%;
-    transform: translateX(-50%);
+.landing-credit {
+    font-size: clamp(1rem, 3vw, 1.2rem);
     color: #ffffff;
-    font-size: 0.85rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-align: center;
-    white-space: nowrap;
-    opacity: 0.6;
+    font-weight: 300;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    margin-top: 0.5rem;
+    pointer-events: auto;
+}
+
+/* --- Contact Footer --- */
+.contact-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    z-index: 999;
+    pointer-events: none;
+    gap: 4px;
+}
+
+.contact-text {
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 4px;
+    opacity: 0.5;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    pointer-events: auto;
+}
+
+.contact-icon {
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.contact-icon:hover {
+    color: var(--accent-color);
+    transform: scale(1.15);
 }
 
 
@@ -922,6 +959,175 @@ main {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+/* --- Nav Icon Button --- */
+.nav-icon-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem;
+}
+
+.nav-icon-btn svg {
+    transition: transform 0.3s ease;
+}
+
+.nav-icon-btn:hover svg {
+    transform: scale(1.15);
+}
+
+/* --- Hamburger Page --- */
+.hamburger-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 2rem;
+    text-align: center;
+    animation: fadeIn 0.8s ease forwards;
+}
+
+.hamburger-qa-row {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    align-items: flex-start;
+}
+
+.hamburger-icon-large {
+    margin-bottom: 1.5rem;
+}
+
+.hamburger-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.hamburger-count-box {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid rgba(229, 9, 20, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.hamburger-label {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.hamburger-count {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--accent-color);
+    text-shadow: 0 0 20px rgba(229, 9, 20, 0.4);
+}
+
+.hamburger-info-card {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 2rem;
+    border-left: 4px solid var(--accent-color);
+    text-align: left;
+}
+
+.hamburger-info-card p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.hamburger-donors {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+}
+
+.hamburger-donors h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.hamburger-donors ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hamburger-donors li {
+    padding: 0.7rem 1rem;
+    background: rgba(229, 9, 20, 0.08);
+    border-radius: 8px;
+    font-weight: 500;
+    color: var(--text-primary);
+    border: 1px solid rgba(229, 9, 20, 0.15);
+    transition: all 0.3s ease;
+}
+
+.hamburger-donors li::before {
+    content: '🍔 ';
+}
+
+.hamburger-donors li:hover {
+    background: rgba(229, 9, 20, 0.15);
+    transform: translateX(5px);
+}
+
+.hamburger-qa {
+    background: var(--surface-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+    flex: 1;
+}
+
+.hamburger-qa h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+    color: var(--text-primary);
+}
+
+.hamburger-answer {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+}
+
+.hamburger-video {
+    margin-top: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: #000;
+}
+
+.hamburger-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
 }
 
 /* --- Responsive --- */
