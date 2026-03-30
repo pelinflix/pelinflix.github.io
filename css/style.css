@@ -1110,6 +1110,38 @@ main {
     margin-bottom: 1rem;
 }
 
+.hamburger-plyr-wrapper {
+    margin-top: 0.75rem;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    position: relative;
+    background: #000;
+}
+
+/* Override global .plyr rules for hamburger players */
+.hamburger-plyr-wrapper .plyr {
+    width: 100% !important;
+    height: 100% !important;
+    border-radius: 10px;
+}
+
+.hamburger-plyr-wrapper .plyr__video-wrapper {
+    padding-bottom: 0 !important;
+    height: 100% !important;
+    width: 100% !important;
+}
+
+.hamburger-plyr-wrapper video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+}
+
 .hamburger-video {
     margin-top: 1rem;
     border-radius: 10px;

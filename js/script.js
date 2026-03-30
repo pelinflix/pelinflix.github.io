@@ -600,4 +600,15 @@ window.addEventListener('load', initPosterScroll);
 
 document.addEventListener('DOMContentLoaded', () => {
     initApp();
+
+    // Initialize Plyr for hamburger page videos
+    const plyrOptions = {
+        controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'fullscreen']
+    };
+    if (document.getElementById('hamburgerPlayer1')) {
+        new Plyr('#hamburgerPlayer1', plyrOptions);
+    }
+    if (document.getElementById('hamburgerPlayer2')) {
+        new Plyr('#hamburgerPlayer2', plyrOptions);
+    }
 });
