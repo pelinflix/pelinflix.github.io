@@ -8,7 +8,6 @@ const toast = document.getElementById('toast');
 const header = document.getElementById('mainHeader');
 const watchlistItems = document.getElementById('watchlistItems');
 let plyrInstance;
-const skipIntroBtn = document.getElementById('skipIntroBtn');
 let currentVideoId = null;
 let currentAnimeName = null;
 let lastSaveTime = 0;
@@ -317,12 +316,6 @@ async function initApp() {
             currentTime = 11;
         }
 
-        if (currentTime > 0 && currentTime < 105 && currentAnimeName !== 'Chainsaw Man' && currentAnimeName !== 'Chainsaw Man - The Movie: Reze Arc') {
-            skipIntroBtn.classList.add('show');
-        } else {
-            skipIntroBtn.classList.remove('show');
-        }
-
         // Save progress every 5 seconds
         if (currentVideoId && currentTime > 0) {
             if (Math.abs(currentTime - lastSaveTime) > 5) {
@@ -349,11 +342,6 @@ async function initApp() {
             localStorage.removeItem(`video-progress-${currentVideoId}`);
             lastSaveTime = 0;
         }
-    });
-
-    skipIntroBtn.addEventListener('click', () => {
-        plyrInstance.currentTime = 105;
-        skipIntroBtn.classList.remove('show');
     });
 
     renderAnimeSections(categoryList, animeDatabase);
