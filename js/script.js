@@ -306,6 +306,17 @@ async function initApp() {
         controls: ['play-large', 'play', 'progress', 'current-time', 'mute', 'volume', 'captions', 'settings', 'pip', 'airplay', 'fullscreen']
     });
 
+    // Move seek overlays INSIDE .plyr so they're visible in fullscreen
+    plyrInstance.on('ready', () => {
+        const plyrEl = document.querySelector('#videoModal .plyr');
+        if (plyrEl) {
+            const left = document.getElementById('seekOverlayLeft');
+            const right = document.getElementById('seekOverlayRight');
+            if (left) plyrEl.appendChild(left);
+            if (right) plyrEl.appendChild(right);
+        }
+    });
+
     // Skip Intro and Resume Playback Logic
     plyrInstance.on('timeupdate', event => {
         let currentTime = plyrInstance.currentTime;
@@ -533,7 +544,61 @@ function closeModal() {
 closeBtn.onclick = closeModal;
 infoCloseBtn.onclick = closeModal;
 window.onclick = (e) => { if (e.target.classList.contains('modal')) closeModal(); };
-document.onkeydown = (e) => { if (e.key === 'Escape') closeModal(); };
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        closeModal();
+        return;
+    }
+
+    // Arrow key seek — only when video modal is open and not focused on a text input
+    if (videoModal.style.display === 'flex' && plyrInstance) {
+        const tag = document.activeElement?.tagName;
+        if (tag === 'INPUT' || tag === 'TEXTAREA') return;
+
+        if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            e.stopPropagation();
+            plyrInstance.currentTime = Math.max(0, plyrInstance.currentTime - 5);
+            triggerSeekAnimation('left');
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            e.stopPropagation();
+            plyrInstance.currentTime = Math.min(plyrInstance.duration || Infinity, plyrInstance.currentTime + 5);
+            triggerSeekAnimation('right');
+        } else if (e.key === ' ') {
+            e.preventDefault();
+            e.stopPropagation();
+            plyrInstance.togglePlay();
+        }
+    }
+}, true); // capture:true — fires before Plyr's bubble-phase listeners
+
+// Seek animation helper
+let seekAnimTimerLeft = null;
+let seekAnimTimerRight = null;
+
+function triggerSeekAnimation(direction) {
+    const overlay = direction === 'left'
+        ? document.getElementById('seekOverlayLeft')
+        : document.getElementById('seekOverlayRight');
+    if (!overlay) return;
+
+    const timer = direction === 'left' ? seekAnimTimerLeft : seekAnimTimerRight;
+    if (timer) clearTimeout(timer);
+
+    // Force restart the CSS animation by removing and re-adding the class
+    overlay.classList.remove('active');
+    // Trigger reflow so the animation restarts
+    void overlay.offsetWidth;
+    overlay.classList.add('active');
+
+    const newTimer = setTimeout(() => {
+        overlay.classList.remove('active');
+    }, 700);
+
+    if (direction === 'left') seekAnimTimerLeft = newTimer;
+    else seekAnimTimerRight = newTimer;
+}
 
 let toastTimeout;
 let toastHideTimeout;
