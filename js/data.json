@@ -1,4 +1,4 @@
-{
+﻿{
     "animeDatabase": {
         "Attack on Titan": {
             "desc": "İnsanlığın devasa duvarlar arkasına çekilip \"Titan\" adı verilen devasa varlıklardan korunduğu bir dünyada,Eren Yeager ve arkadaşları duvarın yıkılmasıyla trajik bir mücadeleye atılırlar.",
@@ -109,7 +109,7 @@
         "Yuri on Ice": {
             "desc": "Serinin hikâyesi, buz Pateni müsabakasının Gran Prix finalinde tüm Japonya’nın umudunu omuzlarında taşıyan, ancak ezici bir şekilde mağlup edilen Yuuri Katsuki’nin etrafında dönmektedir. Kyushu’daki evine dönen karakterimiz, bir yarısının buz patenininden emekli olmak, diğer bir yarısının ise devam etmek istediğini hissetmektedir. Bu karışık duygular içerisinde dönüp dururken, kendisini ailesinin evine kapatır. Aniden, arka arkaya beş kere dünya şampiyonu olan buz patenisti Viktor Nikiforov, yanında kendisinden kıdemli olanları çoktan yenmiş genç bir Rus artistik patinajcı olan Yuri Plisetsky ile birlikte önünde belirir. Viktor, Yuri ve Yuuri’nin üçü de, eşi benzeri görülmemiş Gran Prix serisi üzerine olan meydan okumayı kabul ederler.",
             "rating": "8.3",
-            "pelinRating": "TBA"
+            "pelinRating": "7.5"
         },
         "Claymore": {
             "desc": "İnsanları avlayan ve onların arasında kılık değiştirerek yaşayan Yoma adlı canavarların olduğu bir dünyada, insanlığın tek umudu Claymorelar olarak bilinen yeni bir savaşçı türüdür. Claymorelar; gümüş rengi gözleri olan ve gizemli bir organizasyon tarafından bu yaratıkları yok etmek için yarı-canavara dönüştürülmüş kızlardır. Ama bu doğaüstü güçlerini bir Claymore ne kadar kullanırsa, insan yanını sonsuza kadar kaybetmeye de o kadar yaklaşır…",
@@ -802,157 +802,157 @@
                 "id": 1,
                 "title": "Bölüm 1",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.2"
             },
             {
                 "id": 2,
                 "title": "Bölüm 2",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.4"
             },
             {
                 "id": 3,
                 "title": "Bölüm 3",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.8"
             },
             {
                 "id": 4,
                 "title": "Bölüm 4",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.5"
             },
             {
                 "id": 5,
                 "title": "Bölüm 5",
                 "source": "",
-                "rating": "TBA"
+                "rating": "9.2"
             },
             {
                 "id": 6,
                 "title": "Bölüm 6",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.1"
             },
             {
                 "id": 7,
                 "title": "Bölüm 7",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.6"
             },
             {
                 "id": 8,
                 "title": "Bölüm 8",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.6"
             },
             {
                 "id": 9,
                 "title": "Bölüm 9",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.6"
             },
             {
                 "id": 10,
                 "title": "Bölüm 10",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.2"
             },
             {
                 "id": 11,
                 "title": "Bölüm 11",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.3"
             },
             {
                 "id": 12,
                 "title": "Bölüm 12",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.7"
             },
             {
                 "id": 13,
                 "title": "Bölüm 13",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.9"
             },
             {
                 "id": 14,
                 "title": "Bölüm 14",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.7"
             },
             {
                 "id": 15,
                 "title": "Bölüm 15",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.9"
             },
             {
                 "id": 16,
                 "title": "Bölüm 16",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.9"
             },
             {
                 "id": 17,
                 "title": "Bölüm 17",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.4"
             },
             {
                 "id": 18,
                 "title": "Bölüm 18",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.7"
             },
             {
                 "id": 19,
                 "title": "Bölüm 19",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.3"
             },
             {
                 "id": 20,
                 "title": "Bölüm 20",
                 "source": "",
-                "rating": "TBA"
+                "rating": "9.0"
             },
             {
                 "id": 21,
                 "title": "Bölüm 21",
                 "source": "",
-                "rating": "TBA"
+                "rating": "7.1"
             },
             {
                 "id": 22,
                 "title": "Bölüm 22",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.2"
             },
             {
                 "id": 23,
                 "title": "Bölüm 23",
                 "source": "",
-                "rating": "TBA"
+                "rating": "8.4"
             },
             {
                 "id": 24,
                 "title": "Bölüm 24",
                 "source": "",
-                "rating": "TBA"
+                "rating": "9.0"
             },
             {
                 "id": 25,
                 "title": "Bölüm 25",
                 "source": "",
-                "rating": "TBA"
+                "rating": "9.1"
             },
             {
                 "id": 26,
                 "title": "Bölüm 26",
                 "source": "",
-                "rating": "TBA"
+                "rating": "9.5"
             }
         ],
         "attackOnTitan": [
@@ -1668,7 +1668,7 @@
         },
         {
             "title": "Yuri on Ice",
-            "watched": false
+            "watched": true
         },
         {
             "title": "Claymore",
