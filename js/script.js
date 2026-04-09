@@ -13,6 +13,63 @@ let currentAnimeName = null;
 let lastSaveTime = 0;
 let isVideoLoaded = false;
 
+// --- Currently Watching Management ---
+const CURRENTLY_WATCHING_KEY = 'pelinflix_currently_watching';
+
+function getCurrentlyWatching() {
+    try {
+        const cw = localStorage.getItem(CURRENTLY_WATCHING_KEY);
+        return cw ? JSON.parse(cw) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function setCurrentlyWatching(list) {
+    localStorage.setItem(CURRENTLY_WATCHING_KEY, JSON.stringify(list));
+}
+
+window.toggleCurrentlyWatching = function(catId, isWatching) {
+    let list = getCurrentlyWatching();
+    if (isWatching) {
+        if (!list.includes(catId)) list.push(catId);
+    } else {
+        list = list.filter(id => id !== catId);
+    }
+    setCurrentlyWatching(list);
+    
+    if (window.appCategoryList) {
+        renderAktifIzlenen(window.appCategoryList);
+    }
+};
+
+function renderAktifIzlenen(categoryList) {
+    const grid = document.getElementById('aktifIzlenenGrid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    const cw = getCurrentlyWatching();
+    const activeCats = categoryList.filter(cat => cw.includes(cat.id));
+    
+    if (activeCats.length === 0) {
+        grid.innerHTML = '<p style="color: #888; font-size: 1.1rem; padding: 20px; grid-column: 1 / -1; text-align: center;">Henüz aktif olarak izlediğiniz bir anime bulunmuyor.</p>';
+        return;
+    }
+
+    activeCats.forEach(cat => {
+        const card = document.createElement('div');
+        card.className = 'category-card';
+        card.onclick = () => switchSection(cat.id, null);
+        card.innerHTML = `
+            <div class="category-img-wrapper">
+                <img src="${cat.cover}" alt="${cat.title}">
+            </div>
+            <div class="category-title">${cat.title}</div>
+            <div class="category-genre">${cat.genre}</div>
+        `;
+        grid.appendChild(card);
+    });
+}
+
 // --- Watched Episodes Management ---
 const WATCHED_STORAGE_KEY = 'pelinflix_watched_episodes';
 
@@ -248,6 +305,15 @@ function renderAnimeSections(categoryList, animeDatabase) {
                 </div>
             </div>
 
+            <div class="currently-watching-container" style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px; margin-left: 5px;">
+                <button class="watched-toggle cw-custom-toggle ${getCurrentlyWatching().includes(cat.id) ? 'active' : ''}" onclick="this.classList.toggle('active'); toggleCurrentlyWatching('${cat.id}', this.classList.contains('active'))" style="position: relative; top: 0; left: 0; width: 34px; height: 34px; border-radius: 8px;">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </button>
+                <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">İzliyor</span>
+            </div>
+
             ${mapData.seasons ? `
             <div class="episode-controls" style="margin-bottom: 20px;">
                 <select class="season-select" onchange="filterSeason('${mapData.gridId}', this.value)">
@@ -357,7 +423,10 @@ async function initApp() {
         }
     });
 
+    window.appCategoryList = categoryList;
+
     renderAnimeSections(categoryList, animeDatabase);
+    renderAktifIzlenen(categoryList);
 
     renderAllEpisodes(episodes);
 

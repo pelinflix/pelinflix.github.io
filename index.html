@@ -22,6 +22,7 @@
             <img src="https://fontmeme.com/permalink/260218/df7d552c.png" alt="PelinopTV Logo" class="logo-img">
         </div>
         <nav>
+            <button class="nav-link" onclick="switchSection('aktif-izlenen', this)">Devam ediyor</button>
             <button class="nav-link" onclick="switchSection('categories', this)">Animeler</button>
             <button class="nav-link" onclick="switchSection('watchlist', this)">İzlenecekler</button>
             <button class="nav-link nav-icon-btn" onclick="switchSection('hamburger', this)" title="Hamburger">
@@ -123,6 +124,14 @@
                     </a>
                 </span>
             </footer>
+        </section>
+
+        <!-- Aktif İzlenen Section -->
+        <section id="aktif-izlenen" class="section">
+            <div class="anime-header" style="margin-bottom: 30px;">
+                <h1>Devam ediyor</h1>
+            </div>
+            <div class="categories-grid" id="aktifIzlenenGrid"></div>
         </section>
 
         <!-- Categories Section -->
