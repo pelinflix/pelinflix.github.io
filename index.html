@@ -12,7 +12,7 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
-    <link rel="stylesheet" href="css/style.css?v=3">
+    <link rel="stylesheet" href="css/style.css?v=4">
 </head>
 
 <body>
@@ -33,6 +33,41 @@
                 </svg>
                 <span>Hamburger</span>
             </button>
+            <button class="nav-link auth-nav-btn" id="authBtn" onclick="openAuthModal()">Giriş Yap</button>
+
+            <!-- User dropdown -->
+            <div id="userProfile" class="user-dropdown-wrapper" style="display: none;">
+                <button class="user-dropdown-trigger" id="userDropdownBtn" onclick="toggleUserDropdown()">
+                    <svg class="user-icon-svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z" />
+                    </svg>
+                    <span id="userNameDisplay" class="user-name-text"></span>
+                    <svg class="dropdown-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+
+                <div class="user-dropdown-menu" id="userDropdownMenu">
+                    <div class="dropdown-header">
+                        <span class="dropdown-username" id="dropdownUsernameLabel"></span>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item"
+                        onclick="closeUserDropdown(); loadSettings(); switchSection('ayarlar', null)">
+                        Ayarlar
+                    </button>
+                    <button class="dropdown-item"
+                        onclick="closeUserDropdown(); loadMyComments(); switchSection('yorumlarim', null)">
+                        Yorumlarım
+                    </button>
+                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item dropdown-item--danger" onclick="closeUserDropdown(); handleLogout()">
+                        Çıkış Yap
+                    </button>
+                </div>
+            </div>
         </nav>
     </header>
 
@@ -223,6 +258,121 @@
                 </div>
             </div>
         </section>
+
+        <!-- Ayarlar Section -->
+        <section id="ayarlar" class="section">
+            <div class="anime-header" style="margin-bottom: 30px;">
+                <h1>Ayarlar</h1>
+            </div>
+            <div class="settings-container">
+                <!-- Card 1 -->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">Kullanıcı Adı Değiştir</h3>
+                    <div class="settings-input-group">
+                        <label>Kullanıcı Adı</label>
+                        <input type="text" id="settingsUsernameInput" placeholder="Yeni kullanıcı adı">
+                    </div>
+                    <button class="settings-save-btn" onclick="updateUsername(this)">Kaydet</button>
+                    <div id="settingsUsernameMsg" class="settings-msg"></div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">Email Değiştir</h3>
+                    <div class="settings-input-group">
+                        <label>Email</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="settingsEmailInput" placeholder="Yeni email" autocomplete="off">
+                            <button type="button" class="pw-toggle" onclick="togglePassword('settingsEmailInput', this)"
+                                aria-label="Emaili göster/gizle">
+                                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="display:none">
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="settings-save-btn" onclick="updateEmail(this)">Kaydet</button>
+                    <div id="settingsEmailMsg" class="settings-msg"></div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="settings-card">
+                    <h3 class="settings-card-title">Şifre Değiştir</h3>
+                    <div class="settings-input-group">
+                        <label>Yeni Şifre</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="settingsPassword1" placeholder="••••••••" minlength="6">
+                            <button type="button" class="pw-toggle" onclick="togglePassword('settingsPassword1', this)"
+                                aria-label="Şifreyi göster/gizle">
+                                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="display:none">
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="settings-input-group">
+                        <label>Şifre Tekrar</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="settingsPassword2" placeholder="••••••••" minlength="6">
+                            <button type="button" class="pw-toggle" onclick="togglePassword('settingsPassword2', this)"
+                                aria-label="Şifreyi göster/gizle">
+                                <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" style="display:none">
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                    <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                    <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <button class="settings-save-btn" onclick="updatePassword(this)">Kaydet</button>
+                    <div id="settingsPasswordMsg" class="settings-msg"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Yorumlarım Section -->
+        <section id="yorumlarim" class="section">
+            <div class="anime-header" style="margin-bottom: 30px;">
+                <h1>Yorumlarım</h1>
+            </div>
+            <div class="mycomments-container" id="mycommentsContainer">
+                <p class="mycomments-empty">Yükleniyor...</p>
+            </div>
+        </section>
     </main>
 
     <!-- Video Modal -->
@@ -241,14 +391,14 @@
                 <div class="seek-overlay seek-overlay--left" id="seekOverlayLeft">
                     <div class="seek-circle">
                         <svg class="seek-icon-svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/>
+                            <path d="M6 6h2v12H6zm3.5 6 8.5 6V6z" />
                         </svg>
                     </div>
                 </div>
                 <div class="seek-overlay seek-overlay--right" id="seekOverlayRight">
                     <div class="seek-circle">
                         <svg class="seek-icon-svg" viewBox="0 0 24 24" fill="white">
-                            <path d="M16 6h2v12h-2zM14.5 12 6 18V6z"/>
+                            <path d="M16 6h2v12h-2zM14.5 12 6 18V6z" />
                         </svg>
                     </div>
                 </div>
@@ -276,6 +426,659 @@
     <!-- 100% privacy-first analytics -->
     <script async src="https://scripts.simpleanalyticscdn.com/latest.js"></script>
 
+    <!-- Auth Modal Overlay -->
+    <div id="authModal" class="auth-modal">
+        <div class="auth-modal-content">
+            <span class="close-modal" onclick="closeAuthModal()">&times;</span>
+
+            <div class="auth-tabs">
+                <button class="auth-tab active" id="tabLogin" onclick="switchAuthTab('login')">Giriş Yap</button>
+                <button class="auth-tab" id="tabRegister" onclick="switchAuthTab('register')">Kayıt Ol</button>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="input-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="ornek@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="loginPassword">Şifre</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        <button type="button" class="pw-toggle" onclick="togglePassword('loginPassword', this)"
+                            aria-label="Şifreyi göster/gizle">
+                            <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="display:none">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                                <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="loginError" class="auth-error"></div>
+                <button type="submit" class="auth-submit-btn">Giriş Yap</button>
+            </form>
+
+            <!-- Register Form (Hidden by default) -->
+            <form id="registerForm" style="display: none;" onsubmit="handleRegister(event)">
+                <div class="input-group">
+                    <label for="regUsername">Kullanıcı Adı</label>
+                    <input type="text" id="regUsername" placeholder="pelinflixFan" required>
+                </div>
+                <div class="input-group">
+                    <label for="regEmail">Email</label>
+                    <input type="email" id="regEmail" placeholder="ornek@email.com" required>
+                </div>
+                <div class="input-group">
+                    <label for="regPassword">Şifre</label>
+                    <div class="password-wrapper">
+                        <input type="password" id="regPassword" placeholder="••••••••" required>
+                        <button type="button" class="pw-toggle" onclick="togglePassword('regPassword', this)"
+                            aria-label="Şifreyi göster/gizle">
+                            <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="display:none">
+                                <path
+                                    d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94" />
+                                <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19" />
+                                <line x1="1" y1="1" x2="23" y2="23" />
+                                <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div id="regError" class="auth-error"></div>
+                <button type="submit" class="auth-submit-btn">Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Supabase Integration -->
+    <script type="module">
+        import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm'
+
+        const supabaseUrl = 'https://gensmczvwjdugzvjrnlu.supabase.co';
+        const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdlbnNtY3p2d2pkdWd6dmpybmx1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY3MDkwMjMsImV4cCI6MjA5MjI4NTAyM30.FfGf1NuSBokCSQtWBbOYdDaVZpI6MWf-eufYvnyG-1o';
+        const supabase = createClient(supabaseUrl, supabaseKey);
+        window.supabaseClient = supabase; // Expose to global scope for script.js
+
+        window.openAuthModal = () => {
+            document.getElementById('authModal').style.display = 'flex';
+        };
+
+        window.togglePassword = (inputId, btn) => {
+            const input = document.getElementById(inputId);
+            const eyeOpen = btn.querySelector('.eye-open');
+            const eyeClosed = btn.querySelector('.eye-closed');
+            if (input.type === 'password') {
+                input.type = 'text';
+                eyeOpen.style.display = 'none';
+                eyeClosed.style.display = 'block';
+            } else {
+                input.type = 'password';
+                eyeOpen.style.display = 'block';
+                eyeClosed.style.display = 'none';
+            }
+        };
+
+        window.closeAuthModal = () => {
+            document.getElementById('authModal').style.display = 'none';
+            clearAuthErrors();
+        };
+
+        window.switchAuthTab = (tab) => {
+            clearAuthErrors();
+            const isLogin = tab === 'login';
+
+            document.getElementById('loginForm').style.display = isLogin ? 'block' : 'none';
+            document.getElementById('registerForm').style.display = isLogin ? 'none' : 'block';
+
+            if (isLogin) {
+                document.getElementById('tabLogin').classList.add('active');
+                document.getElementById('tabRegister').classList.remove('active');
+            } else {
+                document.getElementById('tabLogin').classList.remove('active');
+                document.getElementById('tabRegister').classList.add('active');
+            }
+        };
+
+        function clearAuthErrors() {
+            document.getElementById('loginError').textContent = '';
+            document.getElementById('regError').textContent = '';
+        }
+
+        function updateUI(user) {
+            const authBtn = document.getElementById('authBtn');
+            const userProfile = document.getElementById('userProfile');
+            const userNameDisplay = document.getElementById('userNameDisplay');
+            const dropdownUsernameLabel = document.getElementById('dropdownUsernameLabel');
+
+            if (user) {
+                authBtn.style.display = 'none';
+                userProfile.style.display = 'flex';
+                const username = user.user_metadata?.username || 'Kullanıcı';
+                userNameDisplay.textContent = username;
+                if (dropdownUsernameLabel) {
+                    if (window.currentUserIsAdmin) {
+                        // Secure innerHTML escaping for username
+                        const safeName = username.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                        dropdownUsernameLabel.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="#FFD700" style="vertical-align: -2px; margin-right: 4px;" title="Admin"><path d="M2 20h20v2H2v-2zm2-3l3-8 5 4 5-4 3 8H4z"/></svg>${safeName}`;
+                    } else {
+                        dropdownUsernameLabel.textContent = username;
+                    }
+                }
+            } else {
+                authBtn.style.display = 'inline-block';
+                userProfile.style.display = 'none';
+                userNameDisplay.textContent = '';
+                closeUserDropdown();
+            }
+
+            // Sync comments UI visibility
+            document.querySelectorAll('.auth-only').forEach(el => el.style.display = user ? 'block' : 'none');
+            document.querySelectorAll('.guest-only').forEach(el => el.style.display = user ? 'none' : 'block');
+        }
+
+        // --- Dropdown open/close helpers (exposed to global scope) ---
+        window.toggleUserDropdown = function () {
+            const menu = document.getElementById('userDropdownMenu');
+            const btn = document.getElementById('userDropdownBtn');
+            const isOpen = menu.classList.contains('open');
+            if (isOpen) {
+                menu.classList.remove('open');
+                btn.classList.remove('open');
+            } else {
+                menu.classList.add('open');
+                btn.classList.add('open');
+            }
+        };
+
+        window.closeUserDropdown = function () {
+            const menu = document.getElementById('userDropdownMenu');
+            const btn = document.getElementById('userDropdownBtn');
+            if (menu) menu.classList.remove('open');
+            if (btn) btn.classList.remove('open');
+        };
+
+        // Close on click outside
+        document.addEventListener('click', (e) => {
+            const wrapper = document.getElementById('userProfile');
+            if (wrapper && !wrapper.contains(e.target)) {
+                closeUserDropdown();
+            }
+        });
+
+        window.handleLogin = async (e) => {
+            e.preventDefault();
+            clearAuthErrors();
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Giriş yapılıyor...';
+
+            const { error } = await supabase.auth.signInWithPassword({
+                email: document.getElementById('loginEmail').value,
+                password: document.getElementById('loginPassword').value,
+            });
+
+            btn.textContent = 'Giriş Yap';
+            if (error) {
+                document.getElementById('loginError').textContent = 'Hata: ' + error.message;
+            } else {
+                closeAuthModal();
+                document.getElementById('loginForm').reset();
+            }
+        };
+
+        window.handleRegister = async (e) => {
+            e.preventDefault();
+            clearAuthErrors();
+            const btn = e.target.querySelector('button');
+            btn.textContent = 'Kayıt olunuyor...';
+
+            const { data, error } = await supabase.auth.signUp({
+                email: document.getElementById('regEmail').value,
+                password: document.getElementById('regPassword').value,
+                options: {
+                    data: {
+                        username: document.getElementById('regUsername').value
+                    }
+                }
+            });
+
+            btn.textContent = 'Kayıt Ol';
+            if (error) {
+                document.getElementById('regError').textContent = 'Hata: ' + error.message;
+            } else {
+                closeAuthModal();
+                document.getElementById('registerForm').reset();
+                if (!data.session) {
+                    alert('Kayıt başarılı! Lütfen email adresinize gönderilen doğrulama linkine tıklayın.');
+                }
+            }
+        };
+
+        window.handleLogout = async () => {
+            await supabase.auth.signOut();
+            switchSection('home', null);
+        };
+
+        async function checkSession() {
+            const { data: { session } } = await supabase.auth.getSession();
+
+            if (session?.user) {
+                const { data } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).single();
+                window.currentUserIsAdmin = !!data?.is_admin;
+            } else {
+                window.currentUserIsAdmin = false;
+            }
+
+            updateUI(session?.user || null);
+
+            supabase.auth.onAuthStateChange(async (_event, session) => {
+                if (session?.user) {
+                    const { data } = await supabase.from('profiles').select('is_admin').eq('id', session.user.id).single();
+                    window.currentUserIsAdmin = !!data?.is_admin;
+                } else {
+                    window.currentUserIsAdmin = false;
+                }
+                updateUI(session?.user || null);
+            });
+        }
+
+        checkSession();
+
+        // --- Ayarlar Functions ---
+        window.loadSettings = async () => {
+            const { data: { session } } = await window.supabaseClient.auth.getSession();
+            if (session) {
+                const user = session.user;
+                const username = user.user_metadata?.username || '';
+                document.getElementById('settingsUsernameInput').value = username;
+                document.getElementById('settingsEmailInput').value = user.email || '';
+
+                // Clear any leftover messages
+                document.getElementById('settingsUsernameMsg').textContent = '';
+                document.getElementById('settingsEmailMsg').textContent = '';
+                document.getElementById('settingsPasswordMsg').textContent = '';
+
+                // Reset password inputs
+                document.getElementById('settingsPassword1').value = '';
+                document.getElementById('settingsPassword2').value = '';
+            }
+        };
+
+        window.updateUsername = async (btn) => {
+            btn.disabled = true;
+            btn.textContent = 'Kaydediliyor...';
+            const msgEl = document.getElementById('settingsUsernameMsg');
+            msgEl.className = 'settings-msg';
+            msgEl.textContent = '';
+
+            const newUsername = document.getElementById('settingsUsernameInput').value.trim();
+            if (!newUsername) {
+                msgEl.textContent = 'Kullanıcı adı boş olamaz.';
+                msgEl.classList.add('error-text');
+                btn.disabled = false;
+                btn.textContent = 'Kaydet';
+                return;
+            }
+
+            const { data: { session } } = await window.supabaseClient.auth.getSession();
+            if (!session) return;
+
+            // Update user metadata
+            const { error: authError } = await window.supabaseClient.auth.updateUser({
+                data: { username: newUsername }
+            });
+
+            if (authError) {
+                msgEl.textContent = 'Hata: ' + authError.message;
+                msgEl.classList.add('error-text');
+            } else {
+                // Update profile record
+                const { data: updated, error: profileError } = await window.supabaseClient.from('profiles')
+                    .update({ username: newUsername })
+                    .eq('id', session.user.id)
+                    .select('id')
+                    .single();
+
+                if (profileError || !updated) {
+                    console.error("Profile update error:", profileError, "or silently blocked");
+                    msgEl.textContent = 'Kullanıcı adı auth için değişti ancak profil için kaydedilemedi (Supabase policy eksik olabilir).';
+                    msgEl.classList.add('error-text');
+                } else {
+                    msgEl.textContent = 'Kullanıcı adı başarıyla güncellendi.';
+                    msgEl.classList.add('success-text');
+                }
+
+                // Refresh UI immediately
+                const { data: { session: updatedSession } } = await window.supabaseClient.auth.getSession();
+                updateUI(updatedSession?.user || session.user);
+            }
+            btn.disabled = false;
+            btn.textContent = 'Kaydet';
+        };
+
+        window.updateEmail = async (btn) => {
+            btn.disabled = true;
+            btn.textContent = 'Kaydediliyor...';
+            const msgEl = document.getElementById('settingsEmailMsg');
+            msgEl.className = 'settings-msg';
+            msgEl.textContent = '';
+
+            const newEmail = document.getElementById('settingsEmailInput').value.trim();
+            if (!newEmail || !newEmail.includes('@')) {
+                msgEl.textContent = 'Geçerli bir email giriniz.';
+                msgEl.classList.add('error-text');
+                btn.disabled = false;
+                btn.textContent = 'Kaydet';
+                return;
+            }
+
+            const { error } = await window.supabaseClient.auth.updateUser({ email: newEmail });
+            if (error) {
+                msgEl.textContent = 'Hata: ' + error.message;
+                msgEl.classList.add('error-text');
+            } else {
+                msgEl.textContent = 'Yeni email adresine doğrulama maili gönderildi.';
+                msgEl.classList.add('success-text');
+            }
+            btn.disabled = false;
+            btn.textContent = 'Kaydet';
+        };
+
+        window.updatePassword = async (btn) => {
+            btn.disabled = true;
+            btn.textContent = 'Kaydediliyor...';
+            const msgEl = document.getElementById('settingsPasswordMsg');
+            msgEl.className = 'settings-msg';
+            msgEl.textContent = '';
+
+            const pass1 = document.getElementById('settingsPassword1').value;
+            const pass2 = document.getElementById('settingsPassword2').value;
+
+            if (pass1.length < 6) {
+                msgEl.textContent = 'Şifre en az 6 karakter olmalıdır.';
+                msgEl.classList.add('error-text');
+                btn.disabled = false;
+                btn.textContent = 'Kaydet';
+                return;
+            }
+
+            if (pass1 !== pass2) {
+                msgEl.textContent = 'Şifreler eşleşmiyor.';
+                msgEl.classList.add('error-text');
+                btn.disabled = false;
+                btn.textContent = 'Kaydet';
+                return;
+            }
+
+            const { error } = await window.supabaseClient.auth.updateUser({ password: pass1 });
+            if (error) {
+                msgEl.textContent = 'Hata: ' + error.message;
+                msgEl.classList.add('error-text');
+            } else {
+                msgEl.textContent = 'Şifreniz başarıyla değiştirildi.';
+                msgEl.classList.add('success-text');
+                document.getElementById('settingsPassword1').value = '';
+                document.getElementById('settingsPassword2').value = '';
+            }
+            btn.disabled = false;
+            btn.textContent = 'Kaydet';
+        };
+
+        // --- Yorumlarım Functions ---
+        const ANIME_TITLE_MAP = {
+            'attackontitan': 'Attack on Titan',
+            'chainsawman': 'Chainsaw Man',
+            'chainsawmanreze': 'Chainsaw Man - The Movie: Reze Arc',
+            'kakegurui': 'Kakegurui',
+            'deathparade': 'Death Parade',
+            'hellsparadise': "Hell's Paradise",
+            'yurionice': 'Yuri on Ice',
+            'claymore': 'Claymore',
+            'cowboybebop': 'Cowboy Bebop',
+            'guiltycrown': 'Guilty Crown'
+        };
+
+        function relativeTimeTR(dateStr) {
+            const date = new Date(dateStr);
+            const diffMs = Date.now() - date;
+            const diffMins = Math.floor(diffMs / 60000);
+            const diffHours = Math.floor(diffMins / 60);
+            const diffDays = Math.floor(diffHours / 24);
+            if (diffMins < 1) return 'Az önce';
+            if (diffMins < 60) return `${diffMins} dakika önce`;
+            if (diffHours < 24) return `${diffHours} saat önce`;
+            if (diffDays < 7) return `${diffDays} gün önce`;
+            return date.toLocaleDateString('tr-TR');
+        }
+
+        window.loadMyComments = async () => {
+            const container = document.getElementById('mycommentsContainer');
+            container.innerHTML = '<p style="color:#a3a3a3;padding:3rem 0;font-size:1rem;">Yükleniyor...</p>';
+
+            const { data: { session } } = await window.supabaseClient.auth.getSession();
+            if (!session) {
+                container.innerHTML = '<p style="color:#a3a3a3;padding:3rem 0;text-align:center;">Bu sayfayı görmek için giriş yapman gerekiyor.</p>';
+                return;
+            }
+
+            const { data, error } = await window.supabaseClient
+                .from('comments')
+                .select('*')
+                .eq('user_id', session.user.id)
+                .order('created_at', { ascending: false });
+
+            if (error) {
+                container.innerHTML = '<p style="color:#e50914;padding:3rem 0;">Yorumlar yüklenirken hata oluştu.</p>';
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                container.innerHTML = '<p style="color:#a3a3a3;padding:3rem 0;font-size:1rem;">Henüz hiç yorum yapmadın.</p>';
+                return;
+            }
+
+            // Group by anime_id
+            const groups = {};
+            data.forEach(c => {
+                if (!groups[c.anime_id]) groups[c.anime_id] = [];
+                groups[c.anime_id].push(c);
+            });
+
+            const firstLetter = (session.user.user_metadata?.username || 'K').charAt(0).toUpperCase();
+
+            container.innerHTML = '';
+            Object.entries(groups).forEach(([animeId, comments]) => {
+                const title = ANIME_TITLE_MAP[animeId] || animeId;
+                const group = document.createElement('div');
+                group.style.cssText = 'margin-bottom: 2.5rem;';
+
+                const listHTML = comments.map(c => `
+                    <div class="mycomment-item" data-comment-id="${c.id}" data-anime-id="${animeId}"
+                         style="background:rgba(255,255,255,0.05);padding:15px;border-radius:8px;display:flex;gap:15px;box-shadow:0 4px 10px rgba(0,0,0,0.2);transition:opacity 0.3s ease,transform 0.3s ease;margin-bottom:10px;position:relative;">
+                        <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#3a1520,#6b0f1a);border:2px solid rgba(229,9,20,0.5);color:#e50914;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.1rem;font-family:'Poppins',sans-serif;user-select:none;">
+                            ${firstLetter}
+                        </div>
+                        <div style="flex-grow:1;min-width:0;">
+                            <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;">
+                                <span style="color:#555;font-size:0.8rem;">${relativeTimeTR(c.created_at)}</span>
+                                <div style="display:flex;gap:6px;">
+                                    <button class="comment-delete-btn" onclick="editMyComment('${c.id}')" title="Düzenle" style="color:#a3a3a3;opacity:1;">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                                    </button>
+                                    <button class="comment-delete-btn" onclick="deleteMyComment('${c.id}','${animeId}')" title="Sil" style="color:#a3a3a3;opacity:1;">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mycomment-body" style="color:#ddd;font-size:0.95rem;line-height:1.55;word-wrap:break-word;white-space:pre-wrap;">${window.escapeHTML(c.body)}</div>
+                            <div class="mycomment-edit-area" id="editArea-${c.id}" style="display:none;flex-direction:column;gap:8px;margin-top:10px;">
+                                <textarea id="editTA-${c.id}" maxlength="2500" style="width:100%;min-height:70px;background:#1a1a1a;border:1px solid #444;border-radius:6px;color:#fff;padding:10px;font-family:'Inter',sans-serif;font-size:0.95rem;resize:vertical;box-sizing:border-box;outline:none;transition:border-color 0.2s;">${window.escapeHTML(c.body)}</textarea>
+                                <div style="display:flex;gap:8px;">
+                                    <button onclick="saveMyComment('${c.id}','${animeId}')" class="mycomment-save-btn" style="background:#e50914;color:#fff;border:none;padding:8px 18px;border-radius:6px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.875rem;">Kaydet</button>
+                                    <button onclick="cancelEditMyComment('${c.id}')" style="background:rgba(255,255,255,0.08);color:#a3a3a3;border:1px solid rgba(255,255,255,0.12);padding:7px 14px;border-radius:6px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;font-size:0.875rem;">Vazgeç</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+
+                group.innerHTML = `
+                    <div style="display:flex;align-items:center;gap:12px;margin-bottom:1rem;padding:13px 18px;background:rgba(229,9,20,0.07);border:1px solid rgba(229,9,20,0.18);border-left:4px solid #e50914;border-radius:0 10px 10px 0;">
+                        <span style="font-family:'Poppins',sans-serif;font-size:1.1rem;font-weight:700;color:#fff;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">${window.escapeHTML(title)}</span>
+                        <span style="color:#666;font-size:0.8rem;flex-shrink:0;">${comments.length} yorum</span>
+                        <button onclick="goToMyComment('${animeId}','${comments[0].id}')" style="display:inline-flex;align-items:center;gap:5px;font-size:0.8rem;font-weight:600;color:#e50914;background:rgba(229,9,20,0.1);border:1px solid rgba(229,9,20,0.3);border-radius:20px;padding:5px 13px;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0;transition:all 0.2s;">
+                            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Yoruma git
+                        </button>
+                    </div>
+                    <div>${listHTML}</div>
+                `;
+                container.appendChild(group);
+            });
+        };
+
+        window.editMyComment = (commentId) => {
+            const item = document.querySelector(`.mycomment-item[data-comment-id="${commentId}"]`);
+            if (!item) return;
+            const bodyEl = item.querySelector('.mycomment-body');
+            const editArea = item.querySelector('.mycomment-edit-area');
+            const ta = item.querySelector(`#editTA-${commentId}`);
+            bodyEl.style.display = 'none';
+            editArea.style.display = 'flex';
+            ta.focus();
+            ta.setSelectionRange(ta.value.length, ta.value.length);
+        };
+
+        window.cancelEditMyComment = (commentId) => {
+            const item = document.querySelector(`.mycomment-item[data-comment-id="${commentId}"]`);
+            if (!item) return;
+            item.querySelector('.mycomment-body').style.display = '';
+            item.querySelector('.mycomment-edit-area').style.display = 'none';
+        };
+
+        window.goToMyComment = (animeId, commentId) => {
+            switchSection(animeId, null);
+            let attempts = 0;
+            const poll = setInterval(() => {
+                attempts++;
+                const el = document.querySelector(`.comment-item[data-comment-id="${commentId}"]`);
+                if (el) {
+                    clearInterval(poll);
+                    el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    // Pulse highlight
+                    el.style.transition = 'box-shadow 0.3s ease, outline 0.3s ease';
+                    el.style.outline = '2px solid #e50914';
+                    el.style.boxShadow = '0 0 0 4px rgba(229,9,20,0.25), 0 4px 20px rgba(229,9,20,0.3)';
+                    setTimeout(() => {
+                        el.style.outline = '';
+                        el.style.boxShadow = '';
+                    }, 2200);
+                }
+                if (attempts >= 40) clearInterval(poll); // give up after 4s
+            }, 100);
+        };
+
+        window.saveMyComment = async (commentId, animeId) => {
+            const item = document.querySelector(`.mycomment-item[data-comment-id="${commentId}"]`);
+            if (!item) return;
+            const ta = item.querySelector(`#editTA-${commentId}`);
+            let newBody = ta.value.trim().replace(/<\/?[^>]+(>|$)/g, '');
+
+            if (newBody.length < 3) { ta.style.borderColor = '#e50914'; return; }
+            ta.style.borderColor = '';
+
+            const saveBtn = item.querySelector('.mycomment-save-btn');
+            saveBtn.disabled = true;
+            saveBtn.textContent = 'Kaydediliyor...';
+
+            const { data: updated, error } = await window.supabaseClient
+                .from('comments')
+                .update({ body: newBody })
+                .eq('id', commentId)
+                .select('id')
+                .single();
+
+            saveBtn.disabled = false;
+            saveBtn.textContent = 'Kaydet';
+
+            if (error || !updated) {
+                ta.style.borderColor = '#e50914';
+                ta.title = 'Kaydetme başarısız. Supabase UPDATE policy eksik olabilir.';
+                return;
+            }
+
+            // Update body display
+            item.querySelector('.mycomment-body').textContent = newBody;
+            cancelEditMyComment(commentId);
+
+            // Also sync the textarea for future edits
+            ta.value = newBody;
+
+            // Mirror change on the anime page if the comment is visible there
+            const liveEl = document.querySelector(`#${animeId} .comment-item[data-comment-id="${commentId}"] > div > div[style*="color: #ddd"]`);
+            if (liveEl) liveEl.textContent = newBody;
+        };
+
+        window.deleteMyComment = async (commentId, animeId) => {
+            if (!confirm('Bu yorumu silmek istediğine emin misin?')) return;
+            const item = document.querySelector(`.mycomment-item[data-comment-id="${commentId}"]`);
+            if (!item) return;
+
+            item.style.opacity = '0.4';
+            item.style.pointerEvents = 'none';
+
+            const { error } = await window.supabaseClient
+                .from('comments')
+                .delete()
+                .eq('id', commentId);
+
+            if (error) {
+                item.style.opacity = '';
+                item.style.pointerEvents = '';
+                return;
+            }
+
+            item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-15px)';
+            setTimeout(() => {
+                item.remove();
+                // Remove the group heading if no comments left
+                const group = document.querySelector(`.mycomments-anime-group`);
+                if (group) {
+                    const remaining = document.querySelectorAll(`.mycomment-item[data-anime-id="${animeId}"]`);
+                    if (remaining.length === 0) {
+                        group.parentElement && group.remove ? group.remove() : null;
+                    }
+                }
+                // If container is now empty, show empty message
+                const container = document.getElementById('mycommentsContainer');
+                if (container && !container.querySelector('.mycomment-item')) {
+                    container.innerHTML = '<p class="mycomments-empty">Henüz hiç yorum yapmadın.</p>';
+                }
+                // Also remove from the anime page if visible
+                const liveEl = document.querySelector(`.comment-item[data-comment-id="${commentId}"]`);
+                if (liveEl) liveEl.remove();
+            }, 300);
+        };
+    </script>
 </body>
 
 </html>
