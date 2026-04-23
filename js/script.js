@@ -231,7 +231,8 @@ function renderAllEpisodes(episodesList) {
         { episodes: episodesList.yuriOnIce, gridId: 'episodeGridYuriOnIce', animeName: 'Yuri on Ice' },
         { episodes: episodesList.claymore, gridId: 'episodeGridClaymore', animeName: 'Claymore' },
         { episodes: episodesList.cowboyBebop, gridId: 'episodeGridCowboyBebop', animeName: 'Cowboy Bebop' },
-        { episodes: episodesList.guiltyCrown, gridId: 'episodeGridGuiltyCrown', animeName: 'Guilty Crown' }
+        { episodes: episodesList.guiltyCrown, gridId: 'episodeGridGuiltyCrown', animeName: 'Guilty Crown' },
+        { episodes: episodesList.berserk, gridId: 'episodeGridBerserk', animeName: 'Berserk' }
     ];
 
     animeMapping.forEach(item => {
@@ -252,7 +253,8 @@ function getGridIdObj(id) {
         'yurionice': { gridId: 'episodeGridYuriOnIce', title: 'Yuri on Ice', titleSuffix: ' (2016)' },
         'claymore': { gridId: 'episodeGridClaymore', title: 'Claymore', titleSuffix: ' (2007)' },
         'cowboybebop': { gridId: 'episodeGridCowboyBebop', title: 'Cowboy Bebop', titleSuffix: ' (1998)' },
-        'guiltycrown': { gridId: 'episodeGridGuiltyCrown', title: 'Guilty Crown', titleSuffix: ' (2011)' }
+        'guiltycrown': { gridId: 'episodeGridGuiltyCrown', title: 'Guilty Crown', titleSuffix: ' (2011)' },
+        'berserk': { gridId: 'episodeGridBerserk', title: 'Berserk', titleSuffix: '' }
     };
     return map[id];
 }
