@@ -1,4 +1,4 @@
-{
+﻿{
     "animeDatabase": {
         "Attack on Titan": {
             "desc": "İnsanlığın devasa duvarlar arkasına çekilip \"Titan\" adı verilen devasa varlıklardan korunduğu bir dünyada,Eren Yeager ve arkadaşları duvarın yıkılmasıyla trajik bir mücadeleye atılırlar.",
@@ -113,7 +113,7 @@
         },
         "Claymore": {
             "desc": "İnsanları avlayan ve onların arasında kılık değiştirerek yaşayan Yoma adlı canavarların olduğu bir dünyada, insanlığın tek umudu Claymorelar olarak bilinen yeni bir savaşçı türüdür. Claymorelar; gümüş rengi gözleri olan ve gizemli bir organizasyon tarafından bu yaratıkları yok etmek için yarı-canavara dönüştürülmüş kızlardır. Ama bu doğaüstü güçlerini bir Claymore ne kadar kullanırsa, insan yanını sonsuza kadar kaybetmeye de o kadar yaklaşır…",
-            "rating": "8.0",
+            "rating": "7.0",
             "pelinRating": "TBA"
         },
         "Cowboy Bebop": {
@@ -1970,7 +1970,7 @@
         },
         {
             "title": "Claymore",
-            "watched": false
+            "watched": true
         },
         {
             "title": "Cowboy Bebop",
