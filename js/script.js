@@ -620,6 +620,98 @@ function updateEpisodeCardWatchedState(animeName, episodeId) {
     }
 }
 
+createEpisodeCards = function (episodes, gridElement, animeName) {
+    if (!gridElement) {
+        console.warn('Skipping rendering: Grid not found for', animeName);
+        return;
+    }
+
+    gridElement.innerHTML = '';
+    episodes.forEach((ep, index) => {
+        const episodeId = ep.id || `ep-${index + 1}`;
+        const isWatched = isEpisodeWatched(animeName, episodeId);
+
+        const card = document.createElement('div');
+        card.className = `episode-card ${isWatched ? 'watched' : ''}`;
+        card.setAttribute('data-anime', animeName);
+        card.setAttribute('data-episode-id', episodeId);
+
+        if (ep.season) {
+            card.setAttribute('data-season', ep.season);
+            if (String(ep.season) !== "1") {
+                card.style.display = 'none';
+            }
+        }
+
+        card.innerHTML = `
+            <div class="episode-card-body">
+                <div class="episode-text-content">
+                    <div class="episode-title">${ep.title}</div>
+                    ${ep.rating ? `
+                    <div class="episode-rate-row">
+                        <span class="episode-rate-value">IMDb ${ep.rating} / 10</span>
+                    </div>` : ''}
+                </div>
+                <button class="watched-toggle ${isWatched ? 'active' : ''}" data-anime="${animeName}" data-episode-id="${episodeId}" title="Izlendi olarak isaretle" aria-label="Izlendi olarak isaretle" aria-pressed="${isWatched ? 'true' : 'false'}">
+                    <span class="watched-toggle-box" aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                    </span>
+                </button>
+            </div>
+        `;
+
+        card.onclick = (e) => {
+            if (e.target.closest('.watched-toggle')) {
+                return;
+            }
+            if (ep.source) {
+                openVideo(ep.source, ep.title, animeName, episodeId);
+            } else {
+                showToast("Bolum henuz mevcut degil.");
+            }
+        };
+
+        const toggleBtn = card.querySelector('.watched-toggle');
+        toggleBtn.onclick = (e) => {
+            e.stopPropagation();
+            toggleWatchedState(animeName, episodeId, card, toggleBtn);
+        };
+
+        gridElement.appendChild(card);
+    });
+};
+
+toggleWatchedState = function (animeName, episodeId, card, toggleBtn) {
+    const isCurrentlyWatched = isEpisodeWatched(animeName, episodeId);
+
+    if (isCurrentlyWatched) {
+        removeWatchedEpisode(animeName, episodeId);
+        card.classList.remove('watched');
+        toggleBtn.classList.remove('active');
+        toggleBtn.setAttribute('aria-pressed', 'false');
+        return;
+    }
+
+    markEpisodeAsWatched(animeName, episodeId);
+    card.classList.add('watched');
+    toggleBtn.classList.add('active');
+    toggleBtn.setAttribute('aria-pressed', 'true');
+};
+
+updateEpisodeCardWatchedState = function (animeName, episodeId) {
+    const card = document.querySelector(`[data-anime="${animeName}"][data-episode-id="${episodeId}"]`);
+    if (!card) return;
+
+    card.classList.add('watched');
+    const toggleBtn = card.querySelector('.watched-toggle');
+    if (toggleBtn) {
+        toggleBtn.classList.add('active');
+        toggleBtn.setAttribute('aria-pressed', 'true');
+    }
+};
+
 function closeModal() {
     [videoModal, infoModal].forEach(m => m.classList.remove('active'));
     if (plyrInstance) plyrInstance.pause();

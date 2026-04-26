@@ -2256,3 +2256,150 @@ main {
     color: #888;
     border-color: rgba(255, 255, 255, 0.12);
 }
+
+/* Episode row overrides */
+.episode-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem 1.2rem;
+}
+
+.episode-card {
+    display: block;
+    border-radius: 10px;
+    min-height: 0;
+}
+
+.episode-card:hover {
+    transform: translateY(-2px);
+}
+
+.episode-card.watched {
+    opacity: 0.9;
+}
+
+.episode-card.watched:hover {
+    opacity: 0.95;
+}
+
+.episode-card-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 0.9rem;
+    min-width: 0;
+    min-height: 80px;
+    padding: 0.95rem 1.1rem;
+}
+
+.episode-card .watched-badge {
+    display: none;
+}
+
+.episode-text-content {
+    min-width: 0;
+}
+
+.episode-card .thumbnail-container,
+.episode-card .episode-info,
+.episode-card .ep-rating-box,
+.episode-card .play-overlay {
+    display: none;
+}
+
+.episode-card .watched-toggle {
+    position: relative;
+    top: auto;
+    left: auto;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    border: none;
+    border-radius: 9px;
+    background: transparent;
+    box-shadow: none;
+    flex-shrink: 0;
+}
+
+.episode-card .watched-toggle:hover {
+    transform: none;
+    background: transparent;
+    box-shadow: none;
+}
+
+.episode-card .watched-toggle:active {
+    transform: none;
+}
+
+.episode-card .watched-toggle-box {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    border: 1.5px solid rgba(229, 9, 20, 0.55);
+    background: rgba(20, 10, 10, 0.2);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.25s ease;
+}
+
+.episode-card .watched-toggle svg {
+    opacity: 0;
+    transform: scale(0.76);
+    color: var(--accent-color);
+    filter: drop-shadow(0 0 6px rgba(229, 9, 20, 0.45));
+}
+
+.episode-card .watched-toggle.active {
+    background: transparent;
+}
+
+.episode-card .watched-toggle.active .watched-toggle-box {
+    border-color: rgba(229, 9, 20, 0.95);
+    background: rgba(229, 9, 20, 0.16);
+    box-shadow: 0 0 16px rgba(229, 9, 20, 0.18);
+}
+
+.episode-card .watched-toggle.active svg {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.episode-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    margin-bottom: 0.45rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.episode-rate-row {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 0;
+    font-size: 0.78rem;
+    line-height: 1;
+}
+
+.episode-rate-value {
+    color: #111;
+    background: #FFC836;
+    border: none;
+    border-radius: 6px;
+    padding: 0.38rem 0.62rem;
+    font-weight: 800;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+}
+
+@media (max-width: 720px) {
+    .episode-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .episode-card-body {
+        min-height: 74px;
+        padding: 0.9rem 0.95rem;
+    }
+}
