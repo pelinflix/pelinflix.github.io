@@ -124,7 +124,7 @@
         "The Cockpit": {
             "desc": "The Cockpit (1993), Leiji Matsumoto'nun manga serisinden uyarlanan, II. Dünya Savaşı'nın son günlerinde geçen üç farklı, bağımsız hikâyeyi anlatan dramatik bir OVA serisidir. Almanya ve Japonya (Eksen Devletleri) perspektifinden, pilotların görev bilinci, ahlaki ikilemler ve fedakârlık temaları işlenmektedir.",
             "rating": "7.3",
-            "pelinRating": "TBA"
+            "pelinRating": "7.9"
         }
     },
     "episodes": {
@@ -2037,7 +2037,7 @@
         },
         {
             "title": "The Cockpit",
-            "watched": false
+            "watched": true
         },
         {
             "title": "Hellsing",
