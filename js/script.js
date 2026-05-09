@@ -232,7 +232,8 @@ function renderAllEpisodes(episodesList) {
         { episodes: episodesList.claymore, gridId: 'episodeGridClaymore', animeName: 'Claymore' },
         { episodes: episodesList.cowboyBebop, gridId: 'episodeGridCowboyBebop', animeName: 'Cowboy Bebop' },
         { episodes: episodesList.guiltyCrown, gridId: 'episodeGridGuiltyCrown', animeName: 'Guilty Crown' },
-        { episodes: episodesList.berserk, gridId: 'episodeGridBerserk', animeName: 'Berserk' }
+        { episodes: episodesList.berserk, gridId: 'episodeGridBerserk', animeName: 'Berserk' },
+        { episodes: episodesList.theCockpit, gridId: 'episodeGridTheCockpit', animeName: 'The Cockpit' }
     ];
 
     animeMapping.forEach(item => {
@@ -254,7 +255,8 @@ function getGridIdObj(id) {
         'claymore': { gridId: 'episodeGridClaymore', title: 'Claymore', titleSuffix: ' (2007)' },
         'cowboybebop': { gridId: 'episodeGridCowboyBebop', title: 'Cowboy Bebop', titleSuffix: ' (1998)' },
         'guiltycrown': { gridId: 'episodeGridGuiltyCrown', title: 'Guilty Crown', titleSuffix: ' (2011)' },
-        'berserk': { gridId: 'episodeGridBerserk', title: 'Berserk', titleSuffix: '' }
+        'berserk': { gridId: 'episodeGridBerserk', title: 'Berserk', titleSuffix: '' },
+        'thecockpit': { gridId: 'episodeGridTheCockpit', title: 'The Cockpit', titleSuffix: ' (1993)' }
     };
     return map[id];
 }
@@ -273,51 +275,69 @@ function renderAnimeSections(categoryList, animeDatabase) {
         const dbEntry = animeDatabase[dbTitle];
         if (!dbEntry) return;
 
+        // Extract year from titleSuffix e.g. ' (1993)' -> '1993'
+        const yearMatch = mapData.titleSuffix ? mapData.titleSuffix.match(/\((\d{4})\)/) : null;
+        const year = yearMatch ? yearMatch[1] : '';
+
+        // Split genre string into tags
+        const genreTags = cat.genre ? cat.genre.split('/').map(g => g.trim()).filter(Boolean) : [];
+
         const section = document.createElement('section');
         section.id = cat.id;
         section.className = 'section';
 
         section.innerHTML = `
-            <div class="anime-header">
-                <h1>${dbTitle}${mapData.titleSuffix}</h1>
-            </div>
-
-            <div class="info-card">
-                <div class="info-title">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                        stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-color);">
-                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
-                        <path d="M12 8v4"></path>
-                        <path d="M12 16h.01"></path>
-                    </svg>
-                    Hakkında
+            <!-- Cinematic Hero Banner -->
+            <div class="hero-banner">
+                <div class="hero-backdrop">
+                    <img src="${cat.cover}" alt="" class="hero-backdrop-img" loading="lazy">
+                    <div class="hero-gradient-overlay"></div>
+                    <div class="hero-gradient-bottom"></div>
                 </div>
-                <p class="info-description">${dbEntry.desc}</p>
-                <div class="info-meta">
-                    <span class="rating-badge">IMDb</span>
-                    <span class="rating-value">${dbEntry.rating} / 10</span>
-                    <span class="rating-divider">|</span>
-                    <span class="rating-badge pelin-badge">Pelin'in Notu</span>
-                    <span class="rating-value"><svg width="18" height="18" viewBox="0 0 24 24" fill="#e50914"
-                            stroke="#e50914" stroke-width="1" style="vertical-align: -2px; margin-right: 4px;">
-                            <polygon
-                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
-                            </polygon>
-                        </svg>${dbEntry.pelinRating} / 10</span>
-                </div>
-            </div>
 
-            <div class="currently-watching-container" style="display: flex; align-items: center; gap: 12px; margin-bottom: 25px; margin-left: 5px;">
-                <button class="watched-toggle cw-custom-toggle ${getCurrentlyWatching().includes(cat.id) ? 'active' : ''}" onclick="this.classList.toggle('active'); toggleCurrentlyWatching('${cat.id}', this.classList.contains('active'))" style="position: relative; top: 0; left: 0; width: 34px; height: 34px; border-radius: 8px;">
-                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <polyline points="20 6 9 17 4 12"></polyline>
-                    </svg>
-                </button>
-                <span style="font-family: 'Poppins', sans-serif; font-size: 1rem; font-weight: 600; color: #fff; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">İzliyor</span>
+                <div class="hero-content">
+                    <div class="hero-poster">
+                        <img src="${cat.cover}" alt="${dbTitle}" class="hero-poster-img" loading="lazy">
+                    </div>
+                    <div class="hero-info">
+                        <h1 class="hero-title">${dbTitle}</h1>
+                        ${year ? `<span class="hero-year">${year}</span>` : ''}
+
+                        <div class="hero-ratings">
+                            <div class="hero-rating-item">
+                                <span class="rating-badge">IMDb</span>
+                                <span class="hero-rating-score">${dbEntry.rating}</span>
+                            </div>
+                            <div class="hero-rating-divider"></div>
+                            <div class="hero-rating-item">
+                                <span class="rating-badge pelin-badge">Pelin'in Notu</span>
+                                <span class="hero-rating-score">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#e50914" stroke="#e50914" stroke-width="1" style="vertical-align: -1px; margin-right: 3px;">
+                                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                                    </svg>${dbEntry.pelinRating}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="hero-desc-wrapper">
+                            <p class="hero-description${dbEntry.desc.length <= 400 ? ' hero-desc-short' : ''}">${dbEntry.desc}</p>
+                            ${dbEntry.desc.length > 400 ? `<span class="hero-desc-more" onclick="this.parentElement.classList.toggle('expanded'); this.textContent = this.parentElement.classList.contains('expanded') ? 'Daha az' : 'Daha fazla'">Daha fazla</span>` : ''}
+                        </div>
+
+                        <div class="hero-actions">
+                            <button class="watched-toggle cw-custom-toggle hero-watch-toggle ${getCurrentlyWatching().includes(cat.id) ? 'active' : ''}" onclick="this.classList.toggle('active'); toggleCurrentlyWatching('${cat.id}', this.classList.contains('active'))">
+                                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </button>
+                            <span class="hero-watch-label">İzliyor</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             ${mapData.seasons ? `
-            <div class="episode-controls" style="margin-bottom: 20px;">
+            <div class="episode-controls" style="margin-bottom: 20px; margin-top: 10px;">
                 <select class="season-select" onchange="filterSeason('${mapData.gridId}', this.value)">
                     ${mapData.seasons.map(s => `<option value="${s}">${s}. Sezon</option>`).join('')}
                 </select>

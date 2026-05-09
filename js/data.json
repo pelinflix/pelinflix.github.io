@@ -120,6 +120,11 @@
             "desc": "2071'de, bir hiperuzay geçidinin Dünya'yı neredeyse yaşanmaz hale getirdiği bir kazadan yaklaşık elli yıl sonra, insanlık Güneş Sistemi'nin kayalık gezegenlerinin ve uydularının çoğunu kolonileştirdi. Artan suç oranının ortasında, Güneşler Arası Sistem Polisi (ISSP), kayıtlı ödül avcılarının (\"Kovboylar\" olarak da anılır) suçluları kovalayıp bir ödül karşılığında canlandırdıkları yasallaştırılmış bir sözleşme sistemi kurdu.",
             "rating": "8.9",
             "pelinRating": "TBA"
+        },
+        "The Cockpit": {
+            "desc": "The Cockpit (1993), Leiji Matsumoto'nun manga serisinden uyarlanan, II. Dünya Savaşı'nın son günlerinde geçen üç farklı, bağımsız hikâyeyi anlatan dramatik bir OVA serisidir. Almanya ve Japonya (Eksen Devletleri) perspektifinden, pilotların görev bilinci, ahlaki ikilemler ve fedakârlık temaları işlenmektedir.",
+            "rating": "7.3",
+            "pelinRating": "TBA"
         }
     },
     "episodes": {
@@ -1865,6 +1870,26 @@
                 "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/kenpuu-denki-berserk/1/25-7271550721730809884-720p.mp4",
                 "rating": "9.6"
             }
+        ],
+        "theCockpit": [
+            {
+                "id": 1,
+                "title": "Bölüm 1 - Slipstream",
+                "source": "https://res.cloudinary.com/ds0gtbrng/video/upload/v1778319021/ep1_tgdrbw.mp4",
+                "rating": "6.7"
+            },
+            {
+                "id": 2,
+                "title": "Bölüm 2 - Sonic Boom Squadron",
+                "source": "https://res.cloudinary.com/ds0gtbrng/video/upload/v1778320053/ep2_cubxia.mp4",
+                "rating": "7.0"
+            },
+            {
+                "id": 3,
+                "title": "Bölüm 3 - Knight of the Iron Dragon",
+                "source": "https://res.cloudinary.com/ds0gtbrng/video/upload/v1778323034/1ae2284d-09fb-48ca-adc1-c987cbfee0b7_Uploaded_by_turkanime.net_1_zrnjhz.mp4",
+                "rating": "6.8"
+            }
         ]
     },
     "categoryList": [
@@ -1933,6 +1958,12 @@
             "id": "berserk",
             "cover": "https://image.tmdb.org/t/p/original/48c5cdDOHCGzhH9V1qiIgptc5ma.jpg",
             "genre": "Karanlık Fantezi / Aksiyon"
+        },
+        {
+            "title": "The Cockpit",
+            "id": "thecockpit",
+            "cover": "https://image.tmdb.org/t/p/original/5GWT0cPO8IwdVChh6VfOcG6hwQP.jpg",
+            "genre": "Tarihi / Askeri / Dram"
         }
     ],
     "watchlistData": [

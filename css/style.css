@@ -20,6 +20,26 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,0.25) transparent;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
 }
 
 /* --- Header --- */
@@ -461,6 +481,339 @@ main {
     margin-left: auto;
     margin-right: 10px;
     white-space: nowrap;
+}
+
+/* ========================================
+   Cinematic Hero Banner
+   ======================================== */
+.hero-banner {
+    position: relative;
+    width: calc(100% + 10%);
+    margin-left: -5%;
+    margin-top: -100px;
+    padding-top: 100px;
+    min-height: 520px;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.hero-backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero-backdrop-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+    filter: blur(8px) brightness(0.35) saturate(1.3);
+    transform: scale(1.08);
+}
+
+.hero-gradient-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to right,
+        rgba(10, 10, 10, 0.95) 0%,
+        rgba(10, 10, 10, 0.7) 40%,
+        rgba(10, 10, 10, 0.4) 70%,
+        rgba(10, 10, 10, 0.6) 100%
+    );
+}
+
+.hero-gradient-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    background: linear-gradient(
+        to top,
+        var(--bg-color) 0%,
+        rgba(10, 10, 10, 0.8) 40%,
+        transparent 100%
+    );
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5rem;
+    padding: 4rem 5% 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* -- Poster -- */
+.hero-poster {
+    flex-shrink: 0;
+    width: 220px;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow:
+        0 8px 40px rgba(0, 0, 0, 0.7),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.hero-poster:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow:
+        0 16px 60px rgba(0, 0, 0, 0.8),
+        0 0 0 1px rgba(255, 255, 255, 0.12),
+        0 0 40px rgba(229, 9, 20, 0.15);
+}
+
+.hero-poster-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+/* -- Info Panel -- */
+.hero-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding-top: 0.5rem;
+}
+
+.hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+    margin: 0;
+}
+
+.hero-year {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    letter-spacing: 0.5px;
+}
+
+/* Genre tags */
+.hero-genre-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 0.3rem;
+}
+
+.hero-genre-tag {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    padding: 5px 14px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    transition: all 0.25s ease;
+    letter-spacing: 0.3px;
+}
+
+.hero-genre-tag:hover {
+    background: rgba(229, 9, 20, 0.15);
+    border-color: rgba(229, 9, 20, 0.4);
+    color: #ff6b6b;
+}
+
+/* Ratings row */
+.hero-ratings {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 0.4rem;
+    padding: 12px 18px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    backdrop-filter: blur(12px);
+    width: fit-content;
+}
+
+.hero-rating-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.hero-rating-score {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 800;
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+}
+
+.hero-rating-divider {
+    width: 1px;
+    height: 28px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Description */
+.hero-desc-wrapper {
+    margin-top: 0.4rem;
+    max-width: 680px;
+}
+
+.hero-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, 0.7);
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+}
+
+.hero-desc-wrapper.expanded .hero-description {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.hero-description.hero-desc-short {
+    -webkit-line-clamp: unset;
+    overflow: visible;
+}
+
+.hero-desc-more {
+    display: inline-block;
+    margin-top: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.hero-desc-more:hover {
+    color: var(--accent-color);
+}
+
+/* Actions / Watch toggle */
+.hero-actions {
+    margin-top: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hero-watch-toggle {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 34px !important;
+    height: 34px !important;
+    border-radius: 8px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.hero-watch-toggle svg {
+    opacity: 0 !important;
+    transform: scale(0.8) !important;
+    transition: all 0.3s ease;
+}
+
+.hero-watch-toggle.active svg {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+.hero-watch-label {
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* --- Hero Banner Responsive --- */
+@media (max-width: 860px) {
+    .hero-banner {
+        min-height: auto;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 3rem 5% 2rem;
+        gap: 1.5rem;
+    }
+
+    .hero-poster {
+        width: 180px;
+    }
+
+    .hero-info {
+        align-items: center;
+    }
+
+    .hero-genre-tags {
+        justify-content: center;
+    }
+
+    .hero-ratings {
+        justify-content: center;
+    }
+
+    .hero-description {
+        text-align: center;
+        -webkit-line-clamp: 4;
+    }
+
+    .hero-gradient-overlay {
+        background: linear-gradient(
+            to bottom,
+            rgba(10, 10, 10, 0.5) 0%,
+            rgba(10, 10, 10, 0.85) 60%,
+            rgba(10, 10, 10, 0.95) 100%
+        );
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-poster {
+        width: 140px;
+    }
+
+    .hero-ratings {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .hero-rating-divider {
+        width: 60%;
+        height: 1px;
+    }
 }
 
 /* --- Watchlist Section --- */
