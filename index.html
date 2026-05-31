@@ -136,6 +136,42 @@
                     <a href="https://www.twitch.tv/pelinop" target="_blank" class="neon-pelinop">Pelinop</a> anime
                     izliyor
                 </p>
+
+                <!-- Countdown Timer Bar -->
+                <div class="countdown-bar" id="countdownBar" style="display: none;">
+                    <div class="countdown-inner" id="countdownInner">
+                        <div class="countdown-label">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                                style="vertical-align: -2px; margin-right: 6px; opacity: 0.8;">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            Kalan süre
+                        </div>
+                        <div class="countdown-timer" id="countdownTimer">
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="cdDays">00</span>
+                                <span class="countdown-unit-label">Gün</span>
+                            </div>
+                            <span class="countdown-separator">:</span>
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="cdHours">00</span>
+                                <span class="countdown-unit-label">Saat</span>
+                            </div>
+                            <span class="countdown-separator">:</span>
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="cdMinutes">00</span>
+                                <span class="countdown-unit-label">Dk</span>
+                            </div>
+                            <span class="countdown-separator">:</span>
+                            <div class="countdown-unit">
+                                <span class="countdown-number" id="cdSeconds">00</span>
+                                <span class="countdown-unit-label">Sn</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Contact Footer -->
@@ -594,6 +630,47 @@
             // Sync comments UI visibility
             document.querySelectorAll('.auth-only').forEach(el => el.style.display = user ? 'block' : 'none');
             document.querySelectorAll('.guest-only').forEach(el => el.style.display = user ? 'none' : 'block');
+
+            // Sync countdown visibility (only show to logged-in admin users)
+            const countdownBar = document.getElementById('countdownBar');
+            if (countdownBar) {
+                if (user && window.currentUserIsAdmin) {
+                    countdownBar.style.display = 'flex';
+
+                    // Dynamically create and insert the countdown link only for admin
+                    let countdownLink = document.getElementById('countdownLink');
+                    if (!countdownLink) {
+                        countdownLink = document.createElement('a');
+                        countdownLink.id = 'countdownLink';
+                        countdownLink.target = '_blank';
+                        countdownLink.className = 'countdown-link';
+                        countdownLink.textContent = 'Yks Günü Editi';
+                        countdownLink.style.display = 'none'; // Controlled by script.js when timer finishes
+                        countdownBar.appendChild(countdownLink);
+
+                        // Securely fetch the URL from Supabase (fails via RLS policies for non-admins)
+                        window.supabaseClient
+                            .from('admin_secrets')
+                            .select('value')
+                            .eq('key', 'countdown_url')
+                            .single()
+                            .then(({ data, error }) => {
+                                if (data && data.value) {
+                                    countdownLink.href = data.value;
+                                } else {
+                                    console.error('Failed to retrieve secure URL or access denied:', error);
+                                }
+                            });
+                    }
+                } else {
+                    countdownBar.style.display = 'none';
+                    // Completely remove the link element so it's not visible in F12
+                    const countdownLink = document.getElementById('countdownLink');
+                    if (countdownLink) {
+                        countdownLink.remove();
+                    }
+                }
+            }
         }
 
         // --- Dropdown open/close helpers (exposed to global scope) ---

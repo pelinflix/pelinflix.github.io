@@ -825,6 +825,64 @@ window.onscroll = () => {
     else header.classList.remove('scrolled');
 };
 
+// --- Countdown Timer ---
+(function initCountdown() {
+    // ====== EASY EDIT: Change these values ======
+    const TARGET_DAY = 20;
+    const TARGET_MONTH = 6;      // 1=Jan, 2=Feb, ... 5=May, 12=Dec
+    const TARGET_YEAR = 2026;
+    const TARGET_HOUR = 11;     // 1–12 format
+    const TARGET_MINUTE = 30;
+    const TARGET_AMPM = 'AM';   // 'AM' or 'PM'
+    const TARGET_UTC_OFFSET = 3;  // UTC+3 for Turkey
+    // ============================================
+
+    // Convert 12h → 24h
+    let h24 = TARGET_HOUR;
+    if (TARGET_AMPM.toUpperCase() === 'AM' && h24 === 12) h24 = 0;
+    if (TARGET_AMPM.toUpperCase() === 'PM' && h24 !== 12) h24 += 12;
+
+    // Build UTC date by subtracting the offset
+    const targetDate = new Date(Date.UTC(
+        TARGET_YEAR, TARGET_MONTH - 1, TARGET_DAY,
+        h24 - TARGET_UTC_OFFSET, TARGET_MINUTE, 0
+    ));
+
+    const daysEl = document.getElementById('cdDays');
+    const hoursEl = document.getElementById('cdHours');
+    const minutesEl = document.getElementById('cdMinutes');
+    const secondsEl = document.getElementById('cdSeconds');
+    const countdownInner = document.getElementById('countdownInner');
+
+    if (!daysEl || !hoursEl || !minutesEl || !secondsEl) return;
+
+    function updateCountdown() {
+        const now = new Date();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+            // Timer finished — show link
+            if (countdownInner) countdownInner.style.display = 'none';
+            const countdownLink = document.getElementById('countdownLink');
+            if (countdownLink) countdownLink.style.display = 'flex';
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        daysEl.textContent = String(days).padStart(2, '0');
+        hoursEl.textContent = String(hours).padStart(2, '0');
+        minutesEl.textContent = String(minutes).padStart(2, '0');
+        secondsEl.textContent = String(seconds).padStart(2, '0');
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+})();
+
 // --- Smooth Infinite Poster Scroll (JS-based, no CSS jump) ---
 function initPosterScroll() {
     const cols = Array.from(document.querySelectorAll('.poster-col'));
