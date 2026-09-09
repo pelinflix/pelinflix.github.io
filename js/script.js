@@ -73,34 +73,100 @@ function renderAktifIzlenen(categoryList) {
 // --- Watched Episodes Management ---
 const WATCHED_STORAGE_KEY = 'pelinflix_watched_episodes';
 
-function getWatchedEpisodes() {
+/**
+ * Returns the raw localStorage watched map { animeName: [episodeId, ...] }.
+ * Always synchronous — used by isEpisodeWatched during card rendering.
+ */
+function getWatchedEpisodesLocal() {
     try {
         const watched = localStorage.getItem(WATCHED_STORAGE_KEY);
         return watched ? JSON.parse(watched) : {};
     } catch (e) {
-        console.error('Error reading watched episodes:', e);
+        console.error('Error reading watched episodes from localStorage:', e);
         return {};
     }
 }
 
-function markEpisodeAsWatched(animeName, episodeId) {
+/**
+ * Async version: if logged in, fetches all rows from Supabase, merges them
+ * into localStorage, and returns the merged map. Guests get localStorage only.
+ * Exposed as window.getWatchedEpisodes so index.html can call it on login.
+ */
+window.getWatchedEpisodes = async function getWatchedEpisodes(session = null) {
+    const base = getWatchedEpisodesLocal();
+
     try {
-        const watched = getWatchedEpisodes();
-        if (!watched[animeName]) {
-            watched[animeName] = [];
+        if (!session) return base;
+
+        const { data, error } = await window.supabaseClient
+            .from('watched_episodes')
+            .select('anime_name, episode_id');
+
+        if (error) {
+            console.error('Error fetching watched episodes from Supabase:', error);
+            return base;
         }
+
+        // Merge cloud rows into the local map
+        const merged = { ...base };
+        (data || []).forEach(({ anime_name, episode_id }) => {
+            if (!merged[anime_name]) merged[anime_name] = [];
+            if (!merged[anime_name].includes(episode_id)) {
+                merged[anime_name].push(episode_id);
+            }
+        });
+
+        // Persist merged result so isEpisodeWatched stays sync
+        localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(merged));
+        return merged;
+    } catch (e) {
+        console.error('Error syncing watched episodes:', e);
+        return base;
+    }
+};
+
+/**
+ * Marks an episode as watched.
+ * Writes to localStorage immediately, then upserts to Supabase if logged in.
+ */
+async function markEpisodeAsWatched(animeName, episodeId) {
+    // 1. localStorage (always, instant)
+    try {
+        const watched = getWatchedEpisodesLocal();
+        if (!watched[animeName]) watched[animeName] = [];
         if (!watched[animeName].includes(episodeId)) {
             watched[animeName].push(episodeId);
             localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(watched));
         }
     } catch (e) {
-        console.error('Error saving watched episode:', e);
+        console.error('Error saving watched episode to localStorage:', e);
+    }
+
+    // 2. Supabase (only when logged in)
+    try {
+        const { data: { session } } = await window.supabaseClient.auth.getSession();
+        if (!session) return;
+
+        const { error } = await window.supabaseClient
+            .from('watched_episodes')
+            .upsert(
+                { user_id: session.user.id, anime_name: animeName, episode_id: episodeId },
+                { onConflict: 'user_id,anime_name,episode_id' }
+            );
+
+        if (error) console.error('Error upserting watched episode to Supabase:', error);
+    } catch (e) {
+        console.error('Error syncing mark to Supabase:', e);
     }
 }
 
+/**
+ * Synchronous check against localStorage.
+ * Always up-to-date because getWatchedEpisodes() merges into localStorage on sync.
+ */
 function isEpisodeWatched(animeName, episodeId) {
-    const watched = getWatchedEpisodes();
-    return watched[animeName] && watched[animeName].includes(episodeId);
+    const watched = getWatchedEpisodesLocal();
+    return !!(watched[animeName] && watched[animeName].includes(episodeId));
 }
 
 function createEpisodeCards(episodes, gridElement, animeName) {
@@ -111,7 +177,7 @@ function createEpisodeCards(episodes, gridElement, animeName) {
 
     gridElement.innerHTML = '';
     episodes.forEach((ep, index) => {
-        const episodeId = ep.id || `ep-${index + 1}`;
+        const episodeId = String(ep.id || `ep-${index + 1}`);
         const isWatched = isEpisodeWatched(animeName, episodeId);
 
         const card = document.createElement('div');
@@ -160,21 +226,21 @@ function createEpisodeCards(episodes, gridElement, animeName) {
 
         // Add click handler for the toggle button
         const toggleBtn = card.querySelector('.watched-toggle');
-        toggleBtn.onclick = (e) => {
+        toggleBtn.onclick = async (e) => {
             e.stopPropagation(); // Prevent card click
-            toggleWatchedState(animeName, episodeId, card, toggleBtn);
+            await toggleWatchedState(animeName, episodeId, card, toggleBtn);
         };
 
         gridElement.appendChild(card);
     });
 }
 
-function toggleWatchedState(animeName, episodeId, card, toggleBtn) {
+async function toggleWatchedState(animeName, episodeId, card, toggleBtn) {
     const isCurrentlyWatched = isEpisodeWatched(animeName, episodeId);
 
     if (isCurrentlyWatched) {
         // Unmark as watched
-        removeWatchedEpisode(animeName, episodeId);
+        await removeWatchedEpisode(animeName, episodeId);
         card.classList.remove('watched');
         toggleBtn.classList.remove('active');
 
@@ -185,7 +251,7 @@ function toggleWatchedState(animeName, episodeId, card, toggleBtn) {
         }
     } else {
         // Mark as watched
-        markEpisodeAsWatched(animeName, episodeId);
+        await markEpisodeAsWatched(animeName, episodeId);
         card.classList.add('watched');
         toggleBtn.classList.add('active');
 
@@ -202,63 +268,51 @@ function toggleWatchedState(animeName, episodeId, card, toggleBtn) {
     }
 }
 
-function removeWatchedEpisode(animeName, episodeId) {
+/**
+ * Removes an episode from watched list.
+ * Removes from localStorage immediately, then deletes from Supabase if logged in.
+ */
+async function removeWatchedEpisode(animeName, episodeId) {
+    // 1. localStorage (always, instant)
     try {
-        const watched = getWatchedEpisodes();
+        const watched = getWatchedEpisodesLocal();
         if (watched[animeName]) {
             watched[animeName] = watched[animeName].filter(id => id !== episodeId);
-            // Remove anime key if no episodes left
-            if (watched[animeName].length === 0) {
-                delete watched[animeName];
-            }
+            if (watched[animeName].length === 0) delete watched[animeName];
             localStorage.setItem(WATCHED_STORAGE_KEY, JSON.stringify(watched));
         }
     } catch (e) {
-        console.error('Error removing watched episode:', e);
+        console.error('Error removing watched episode from localStorage:', e);
+    }
+
+    // 2. Supabase (only when logged in)
+    try {
+        const { data: { session } } = await window.supabaseClient.auth.getSession();
+        if (!session) return;
+
+        const { error } = await window.supabaseClient
+            .from('watched_episodes')
+            .delete()
+            .eq('user_id', session.user.id)
+            .eq('anime_name', animeName)
+            .eq('episode_id', episodeId);
+
+        if (error) console.error('Error deleting watched episode from Supabase:', error);
+    } catch (e) {
+        console.error('Error syncing remove to Supabase:', e);
     }
 }
 
 
 // --- Anime Episode Rendering ---
-function renderAllEpisodes(episodesList) {
-    const animeMapping = [
-        { episodes: episodesList.attackOnTitan, gridId: 'episodeGridAttackOnTitan', animeName: 'Attack on Titan' },
-        { episodes: episodesList.chainsawMan, gridId: 'episodeGridChainsawMan', animeName: 'Chainsaw Man' },
-        { episodes: episodesList.chainsawManReze, gridId: 'episodeGridChainsawManReze', animeName: 'Chainsaw Man - The Movie: Reze Arc' },
-        { episodes: episodesList.kakegurui, gridId: 'episodeGridKakegurui', animeName: 'Kakegurui' },
-        { episodes: episodesList.deathParade, gridId: 'episodeGridDeathParade', animeName: 'Death Parade' },
-        { episodes: episodesList.hellsParadise, gridId: 'episodeGridHellsParadise', animeName: "Hell's Paradise" },
-        { episodes: episodesList.yuriOnIce, gridId: 'episodeGridYuriOnIce', animeName: 'Yuri on Ice' },
-        { episodes: episodesList.claymore, gridId: 'episodeGridClaymore', animeName: 'Claymore' },
-        { episodes: episodesList.cowboyBebop, gridId: 'episodeGridCowboyBebop', animeName: 'Cowboy Bebop' },
-        { episodes: episodesList.guiltyCrown, gridId: 'episodeGridGuiltyCrown', animeName: 'Guilty Crown' },
-        { episodes: episodesList.berserk, gridId: 'episodeGridBerserk', animeName: 'Berserk' },
-        { episodes: episodesList.theCockpit, gridId: 'episodeGridTheCockpit', animeName: 'The Cockpit' }
-    ];
+window.renderAllEpisodes = function renderAllEpisodes(episodesList) {
 
-    animeMapping.forEach(item => {
-        createEpisodeCards(item.episodes, document.getElementById(item.gridId), item.animeName);
+    const cats = typeof categoryList !== 'undefined' ? categoryList : (window.appCategoryList || window.categoryList || []);
+    cats.forEach(cat => {
+        const episodes = episodesList[cat.id];
+        const gridId = `episodeGrid-${cat.id}`;
+        createEpisodeCards(episodes, document.getElementById(gridId), cat.title);
     });
-}
-// ⚠️ When adding a new anime to data.json categoryList,
-// you must also add a matching entry here.
-// --- Watchlist Management ---
-function getGridIdObj(id) {
-    const map = {
-        'attackontitan': { gridId: 'episodeGridAttackOnTitan', title: 'Attack on Titan', titleSuffix: '', seasons: [1, 2, 3, 4] },
-        'chainsawman': { gridId: 'episodeGridChainsawMan', title: 'Chainsaw Man', titleSuffix: ' (2022)' },
-        'chainsawmanreze': { gridId: 'episodeGridChainsawManReze', title: 'Chainsaw Man - The Movie: Reze Arc', titleSuffix: '' },
-        'kakegurui': { gridId: 'episodeGridKakegurui', title: 'Kakegurui', titleSuffix: ' (2017)' },
-        'deathparade': { gridId: 'episodeGridDeathParade', title: 'Death Parade', titleSuffix: ' (2015)' },
-        'hellsparadise': { gridId: 'episodeGridHellsParadise', title: "Hell's Paradise", titleSuffix: ' (2023)' },
-        'yurionice': { gridId: 'episodeGridYuriOnIce', title: 'Yuri on Ice', titleSuffix: ' (2016)' },
-        'claymore': { gridId: 'episodeGridClaymore', title: 'Claymore', titleSuffix: ' (2007)' },
-        'cowboybebop': { gridId: 'episodeGridCowboyBebop', title: 'Cowboy Bebop', titleSuffix: ' (1998)' },
-        'guiltycrown': { gridId: 'episodeGridGuiltyCrown', title: 'Guilty Crown', titleSuffix: ' (2011)' },
-        'berserk': { gridId: 'episodeGridBerserk', title: 'Berserk', titleSuffix: '' },
-        'thecockpit': { gridId: 'episodeGridTheCockpit', title: 'The Cockpit', titleSuffix: ' (1993)' }
-    };
-    return map[id];
 }
 
 function renderAnimeSections(categoryList, animeDatabase) {
@@ -267,16 +321,16 @@ function renderAnimeSections(categoryList, animeDatabase) {
     container.innerHTML = '';
 
     categoryList.forEach(cat => {
-        const mapData = getGridIdObj(cat.id);
-        if (!mapData) return;
+        const gridId = `episodeGrid-${cat.id}`;
+        const dbTitle = cat.title;
+        const titleSuffix = cat.titleSuffix || '';
+        const seasons = cat.seasons || null;
 
-        // The title matches animeDatabase key.
-        const dbTitle = mapData.title;
         const dbEntry = animeDatabase[dbTitle];
         if (!dbEntry) return;
 
         // Extract year from titleSuffix e.g. ' (1993)' -> '1993'
-        const yearMatch = mapData.titleSuffix ? mapData.titleSuffix.match(/\((\d{4})\)/) : null;
+        const yearMatch = titleSuffix ? titleSuffix.match(/\((\d{4})\)/) : null;
         const year = yearMatch ? yearMatch[1] : '';
 
         // Split genre string into tags
@@ -336,15 +390,15 @@ function renderAnimeSections(categoryList, animeDatabase) {
                 </div>
             </div>
 
-            ${mapData.seasons ? `
+            ${seasons ? `
             <div class="episode-controls" style="margin-bottom: 20px; margin-top: 10px;">
-                <select class="season-select" onchange="filterSeason('${mapData.gridId}', this.value)">
-                    ${mapData.seasons.map(s => `<option value="${s}">${s}. Sezon</option>`).join('')}
+                <select class="season-select" onchange="filterSeason('${gridId}', this.value)">
+                    ${seasons.map(s => `<option value="${s}">${s}. Sezon</option>`).join('')}
                 </select>
             </div>
             ` : ''}
 
-            <div class="episode-grid" id="${mapData.gridId}"></div>
+            <div class="episode-grid" id="${gridId}"></div>
             
             <!-- COMMENTS SECTION AT THE END -->
             <div class="comment-section" data-anime-id="${cat.id}" style="margin-top: 40px; border-top: 1px solid #333; padding-top: 20px; max-width: 800px;">
@@ -466,7 +520,8 @@ async function initApp() {
     renderAnimeSections(categoryList, animeDatabase);
     renderAktifIzlenen(categoryList);
 
-    renderAllEpisodes(episodes);
+    window._lastEpisodesList = episodes;
+    window.renderAllEpisodes(episodes);
 
     watchlistItems.innerHTML = '';
     watchlistData.forEach((item, index) => {
@@ -648,7 +703,7 @@ createEpisodeCards = function (episodes, gridElement, animeName) {
 
     gridElement.innerHTML = '';
     episodes.forEach((ep, index) => {
-        const episodeId = ep.id || `ep-${index + 1}`;
+        const episodeId = String(ep.id || `ep-${index + 1}`);
         const isWatched = isEpisodeWatched(animeName, episodeId);
 
         const card = document.createElement('div');
@@ -694,30 +749,29 @@ createEpisodeCards = function (episodes, gridElement, animeName) {
         };
 
         const toggleBtn = card.querySelector('.watched-toggle');
-        toggleBtn.onclick = (e) => {
+        toggleBtn.onclick = async (e) => {
             e.stopPropagation();
-            toggleWatchedState(animeName, episodeId, card, toggleBtn);
+            await toggleWatchedState(animeName, episodeId, card, toggleBtn);
         };
 
         gridElement.appendChild(card);
     });
 };
 
-toggleWatchedState = function (animeName, episodeId, card, toggleBtn) {
+toggleWatchedState = async function (animeName, episodeId, card, toggleBtn) {
     const isCurrentlyWatched = isEpisodeWatched(animeName, episodeId);
 
     if (isCurrentlyWatched) {
-        removeWatchedEpisode(animeName, episodeId);
+        await removeWatchedEpisode(animeName, episodeId);
         card.classList.remove('watched');
         toggleBtn.classList.remove('active');
         toggleBtn.setAttribute('aria-pressed', 'false');
-        return;
+    } else {
+        await markEpisodeAsWatched(animeName, episodeId);
+        card.classList.add('watched');
+        toggleBtn.classList.add('active');
+        toggleBtn.setAttribute('aria-pressed', 'true');
     }
-
-    markEpisodeAsWatched(animeName, episodeId);
-    card.classList.add('watched');
-    toggleBtn.classList.add('active');
-    toggleBtn.setAttribute('aria-pressed', 'true');
 };
 
 updateEpisodeCardWatchedState = function (animeName, episodeId) {

@@ -678,6 +678,20 @@
         };
 
         window.handleLogout = async () => {
+            // Clear all user-specific data from localStorage BEFORE signing out
+            localStorage.removeItem('pelinflix_watched_episodes');
+            localStorage.removeItem('pelinflix_currently_watching');
+
+            // Re-render episode cards immediately so watched marks disappear
+            if (window._lastEpisodesList && typeof window.renderAllEpisodes === 'function') {
+                window.renderAllEpisodes(window._lastEpisodesList);
+            }
+
+            // Re-render currently watching section
+            if (window.appCategoryList && typeof renderAktifIzlenen === 'function') {
+                renderAktifIzlenen(window.appCategoryList);
+            }
+
             await supabase.auth.signOut();
             switchSection('home', null);
         };
@@ -702,6 +716,25 @@
                     window.currentUserIsAdmin = false;
                 }
                 updateUI(session?.user || null);
+
+                // On login or page load with existing session: pull the user's watched episodes from Supabase,
+                // merge into localStorage, then re-render cards so badges appear immediately.
+                if (session?.user && (_event === 'SIGNED_IN' || _event === 'INITIAL_SESSION') && typeof window.getWatchedEpisodes === 'function') {
+                    await window.getWatchedEpisodes(session);
+                    // Re-render all episode grids to reflect synced watch state
+                    if (window._lastEpisodesList && typeof window.renderAllEpisodes === 'function') {
+                        window.renderAllEpisodes(window._lastEpisodesList);
+                    }
+                }
+
+                // On logout: clear watched episodes from localStorage and re-render cards
+                // so the checkmarks are removed for the guest view.
+                if (_event === 'SIGNED_OUT') {
+                    localStorage.removeItem('pelinflix_watched_episodes');
+                    if (window._lastEpisodesList && typeof window.renderAllEpisodes === 'function') {
+                        window.renderAllEpisodes(window._lastEpisodesList);
+                    }
+                }
             });
         }
 

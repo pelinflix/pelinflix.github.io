@@ -37,9 +37,9 @@
             "pelinRating": "TBA"
         },
         "One Punch Man": {
-            "desc": "Hobi olarak kahramanlık yapan Saitama, üç yıllık özel bir antrenmanın ardından tüm saçlarını kaybetmiş ancak yenilmez bir güce kavuşmuştur. Karşısına çıkan tüm düşmanlarını tek bir yumrukla yenebilen Saitama, bu ezici gücü yüzünden savaşma heyecanını kaybetmiş ve can sıkıntısıyla baş başa kalmıştır.",
+            "desc": "Saitama, hobi olarak kahramanlık yapan inanılmaz güçlü bir adamdır. O kadar güçlüdür ki, en zorlu rakiplerini bile tek bir yumrukla yener, bu da onu büyük bir boşluğa sürükler.",
             "rating": "8.7",
-            "pelinRating": "9.0"
+            "pelinRating": "TBA"
         },
         "Evangelion": {
             "desc": "Dünya, \"Melek\" adı verilen devasa varlıklar tarafından tehdit edilmektedir. İnsanlığın son umudu olan EVA adlı dev robotları kullanmak için seçilen gençlerin psikolojik travmalarını konu alır.",
@@ -125,11 +125,6 @@
             "desc": "The Cockpit (1993), Leiji Matsumoto'nun manga serisinden uyarlanan, II. Dünya Savaşı'nın son günlerinde geçen üç farklı, bağımsız hikâyeyi anlatan dramatik bir OVA serisidir. Almanya ve Japonya (Eksen Devletleri) perspektifinden, pilotların görev bilinci, ahlaki ikilemler ve fedakârlık temaları işlenmektedir.",
             "rating": "7.3",
             "pelinRating": "7.9"
-        },
-        "Gintama": {
-            "desc": "Uzaylıların Edo Dönemi Japonya'sını istila ettiği bir dünyada gökdelenler, trenler ve motosikletler Dünya sakinlerinin basit yaşamının yerini aldı. Ancak bir adam hâlâ Yorozuya Gin-san olarak da bilinen Gintoki Sakata adlı bir samurayın ruhunu taşıyor. Gintoki ne kadar pervasız olsa da kendi kararlılığını taşıyor ve arkadaşlarıyla birlikte her türlü zorluğa göğüs germeye hazır.",
-            "rating": "8.7",
-            "pelinRating": "TBA"
         }
     },
     "episodes": {
@@ -1895,653 +1890,6 @@
                 "source": "https://res.cloudinary.com/ds0gtbrng/video/upload/v1778323034/1ae2284d-09fb-48ca-adc1-c987cbfee0b7_Uploaded_by_turkanime.net_1_zrnjhz.mp4",
                 "rating": "6.8"
             }
-        ],
-        "onepunchman": [
-            {
-                "id": 1,
-                "season": 1,
-                "title": "Bölüm 1",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 2,
-                "season": 1,
-                "title": "Bölüm 2",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 3,
-                "season": 1,
-                "title": "Bölüm 3",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 4,
-                "season": 1,
-                "title": "Bölüm 4",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 5,
-                "season": 1,
-                "title": "Bölüm 5",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 6,
-                "season": 1,
-                "title": "Bölüm 6",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 7,
-                "season": 1,
-                "title": "Bölüm 7",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 8,
-                "season": 1,
-                "title": "Bölüm 8",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 9,
-                "season": 1,
-                "title": "Bölüm 9",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 10,
-                "season": 1,
-                "title": "Bölüm 10",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 11,
-                "season": 1,
-                "title": "Bölüm 11",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 12,
-                "season": 1,
-                "title": "Bölüm 12",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 13,
-                "season": 1,
-                "title": "Bölüm 13",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 14,
-                "season": 1,
-                "title": "Bölüm 14",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 15,
-                "season": 1,
-                "title": "Bölüm 15",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 16,
-                "season": 1,
-                "title": "Bölüm 16",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 17,
-                "season": 1,
-                "title": "Bölüm 17",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 18,
-                "season": 1,
-                "title": "Bölüm 18",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 19,
-                "season": 1,
-                "title": "Bölüm 19",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 20,
-                "season": 2,
-                "title": "Bölüm 1",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 21,
-                "season": 2,
-                "title": "Bölüm 2",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 22,
-                "season": 2,
-                "title": "Bölüm 3",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 23,
-                "season": 2,
-                "title": "Bölüm 4",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 24,
-                "season": 2,
-                "title": "Bölüm 5",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 25,
-                "season": 2,
-                "title": "Bölüm 6",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 26,
-                "season": 2,
-                "title": "Bölüm 7",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 27,
-                "season": 2,
-                "title": "Bölüm 8",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 28,
-                "season": 2,
-                "title": "Bölüm 9",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 29,
-                "season": 2,
-                "title": "Bölüm 10",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 30,
-                "season": 2,
-                "title": "Bölüm 11",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 31,
-                "season": 2,
-                "title": "Bölüm 12",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 32,
-                "season": 2,
-                "title": "Bölüm 13",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 33,
-                "season": 2,
-                "title": "Bölüm 14",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 34,
-                "season": 2,
-                "title": "Bölüm 15",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 35,
-                "season": 2,
-                "title": "Bölüm 16",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 36,
-                "season": 2,
-                "title": "Bölüm 17",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 37,
-                "season": 2,
-                "title": "Bölüm 18",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 38,
-                "season": 3,
-                "title": "Bölüm 1",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 39,
-                "season": 3,
-                "title": "Bölüm 2",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 40,
-                "season": 3,
-                "title": "Bölüm 3",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 41,
-                "season": 3,
-                "title": "Bölüm 4",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 42,
-                "season": 3,
-                "title": "Bölüm 5",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 43,
-                "season": 3,
-                "title": "Bölüm 6",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 44,
-                "season": 3,
-                "title": "Bölüm 7",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 45,
-                "season": 3,
-                "title": "Bölüm 8",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 46,
-                "season": 3,
-                "title": "Bölüm 9",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 47,
-                "season": 3,
-                "title": "Bölüm 10",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 48,
-                "season": 3,
-                "title": "Bölüm 11",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            },
-            {
-                "id": 49,
-                "season": 3,
-                "title": "Bölüm 12",
-                "source": "placeholder.mp4",
-                "rating": "8.5"
-            }
-        ],
-        "gintama": [
-            {
-                "id": 1,
-                "title": "Bölüm 1",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/1-7352040682258698377-480p.mp4?big=1",
-                "rating": "6.7"
-            },
-            {
-                "id": 2,
-                "title": "Bölüm 2",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/2-7352040682258698377-480p.mp4?big=1",
-                "rating": "6.8"
-            },
-            {
-                "id": 3,
-                "title": "Bölüm 3",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/3-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.1"
-            },
-            {
-                "id": 4,
-                "title": "Bölüm 4",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/4-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.2"
-            },
-            {
-                "id": 5,
-                "title": "Bölüm 5",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/5-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 6,
-                "title": "Bölüm 6",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/6-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.4"
-            },
-            {
-                "id": 7,
-                "title": "Bölüm 7",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/7-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.1"
-            },
-            {
-                "id": 8,
-                "title": "Bölüm 8",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/8-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.7"
-            },
-            {
-                "id": 9,
-                "title": "Bölüm 9",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/9-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.7"
-            },
-            {
-                "id": 10,
-                "title": "Bölüm 10",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/10-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 11,
-                "title": "Bölüm 11",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/11-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.3"
-            },
-            {
-                "id": 12,
-                "title": "Bölüm 12",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/12-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.1"
-            },
-            {
-                "id": 13,
-                "title": "Bölüm 13",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/13-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.8"
-            },
-            {
-                "id": 14,
-                "title": "Bölüm 14",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/14-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.0"
-            },
-            {
-                "id": 15,
-                "title": "Bölüm 15",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/15-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.2"
-            },
-            {
-                "id": 16,
-                "title": "Bölüm 16",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/16-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.2"
-            },
-            {
-                "id": 17,
-                "title": "Bölüm 17",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/17-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.3"
-            },
-            {
-                "id": 18,
-                "title": "Bölüm 18",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/18-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.4"
-            },
-            {
-                "id": 19,
-                "title": "Bölüm 19",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/19-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 20,
-                "title": "Bölüm 20",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/20-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.3"
-            },
-            {
-                "id": 21,
-                "title": "Bölüm 21",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/21-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 22,
-                "title": "Bölüm 22",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/22-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.6"
-            },
-            {
-                "id": 23,
-                "title": "Bölüm 23",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/23-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.4"
-            },
-            {
-                "id": 24,
-                "title": "Bölüm 24",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/24-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 25,
-                "title": "Bölüm 25",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/25-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.6"
-            },
-            {
-                "id": 26,
-                "title": "Bölüm 26",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/26-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.3"
-            },
-            {
-                "id": 27,
-                "title": "Bölüm 27",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/27-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.5"
-            },
-            {
-                "id": 28,
-                "title": "Bölüm 28",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/28-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.6"
-            },
-            {
-                "id": 29,
-                "title": "Bölüm 29",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/29-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.7"
-            },
-            {
-                "id": 30,
-                "title": "Bölüm 30",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/30-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.7"
-            },
-            {
-                "id": 31,
-                "title": "Bölüm 31",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/31-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.8"
-            },
-            {
-                "id": 32,
-                "title": "Bölüm 32",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/32-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.7"
-            },
-            {
-                "id": 33,
-                "title": "Bölüm 33",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/33-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.8"
-            },
-            {
-                "id": 34,
-                "title": "Bölüm 34",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/34-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.9"
-            },
-            {
-                "id": 35,
-                "title": "Bölüm 35",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/35-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.9"
-            },
-            {
-                "id": 36,
-                "title": "Bölüm 36",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/36-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.0"
-            },
-            {
-                "id": 37,
-                "title": "Bölüm 37",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/37-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.9"
-            },
-            {
-                "id": 38,
-                "title": "Bölüm 38",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/38-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.1"
-            },
-            {
-                "id": 39,
-                "title": "Bölüm 39",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/39-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.3"
-            },
-            {
-                "id": 40,
-                "title": "Bölüm 40",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/40-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.9"
-            },
-            {
-                "id": 41,
-                "title": "Bölüm 41",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/41-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.8"
-            },
-            {
-                "id": 42,
-                "title": "Bölüm 42",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/42-7352040682258698377-480p.mp4?big=1",
-                "rating": "7.9"
-            },
-            {
-                "id": 43,
-                "title": "Bölüm 43",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/43-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.0"
-            },
-            {
-                "id": 44,
-                "title": "Bölüm 44",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/44-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.1"
-            },
-            {
-                "id": 45,
-                "title": "Bölüm 45",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/45-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.0"
-            },
-            {
-                "id": 46,
-                "title": "Bölüm 46",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/46-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.2"
-            },
-            {
-                "id": 47,
-                "title": "Bölüm 47",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/47-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.0"
-            },
-            {
-                "id": 48,
-                "title": "Bölüm 48",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/48-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.1"
-            },
-            {
-                "id": 49,
-                "title": "Bölüm 49",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/49-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.0"
-            },
-            {
-                "id": 50,
-                "title": "Bölüm 50",
-                "source": "https://de2---vn-t9g4tsan-5qcl.yeshi.eu.org/animes/gintama/1/50-7352040682258698377-480p.mp4?big=1",
-                "rating": "8.2"
-            }
         ]
     },
     "categoryList": [
@@ -2561,10 +1909,11 @@
             "title": "Chainsaw Man",
             "id": "chainsawman",
             "cover": "https://m.media-amazon.com/images/M/MV5BZGY2ZTM2MWMtNzA2OS00ZjJlLWIwZTMtMDBhN2EwYjZjZjEyXkEyXkFqcGc@._V1_FMjpg_UX1064_.jpg",
-            "genre": "Aksiyon & Macera / Fantezi"
+            "genre": "Aksiyon & Macera / Fantezi",
+            "titleSuffix": " (2022)"
         },
         {
-            "title": "Chainsaw Man - The Movie: Reze Arc",
+            "title": "Chainsaw Man Reze Arc",
             "id": "chainsawmanreze",
             "cover": "https://image.tmdb.org/t/p/original/xdzLBZjCVSEsic7m7nJc4jNJZVW.jpg",
             "genre": "Movie / Aksiyon"
@@ -2573,43 +1922,50 @@
             "title": "Kakegurui",
             "id": "kakegurui",
             "cover": "https://image.tmdb.org/t/p/original/99jgepKwa0yqLY0pP5BlfYLH6nX.jpg",
-            "genre": "Drama / Gizem"
+            "genre": "Drama / Gizem",
+            "titleSuffix": " (2017)"
         },
         {
             "title": "Death Parade",
             "id": "deathparade",
             "cover": "https://image.tmdb.org/t/p/original/q95PaZEpjfNzmz3c0TFFAG6lc7S.jpg",
-            "genre": "Drama / Gerilim"
+            "genre": "Drama / Gerilim",
+            "titleSuffix": " (2015)"
         },
         {
             "title": "Hell's Paradise",
             "id": "hellsparadise",
             "cover": "https://image.tmdb.org/t/p/original/1V9I7SvZbYoMbSvdtnlkkq9SB1k.jpg",
-            "genre": "Aksiyon & Macera / Fantezi"
+            "genre": "Aksiyon & Macera / Fantezi",
+            "titleSuffix": " (2023)"
         },
         {
             "title": "Yuri on Ice",
             "id": "yurionice",
             "cover": "https://image.tmdb.org/t/p/original/oxenakJNCj06JrWHENjvwaWGcSz.jpg",
-            "genre": "Spor / Dram"
+            "genre": "Spor / Dram",
+            "titleSuffix": " (2016)"
         },
         {
             "title": "Claymore",
             "id": "claymore",
             "cover": "https://image.tmdb.org/t/p/original/rQt8X4kjBxah0laGwUVJISf1086.jpg",
-            "genre": "Aksiyon / Karanlık Fantezi"
+            "genre": "Aksiyon / Karanlık Fantezi",
+            "titleSuffix": " (2007)"
         },
         {
             "title": "Cowboy Bebop",
             "id": "cowboybebop",
             "cover": "https://image.tmdb.org/t/p/original/xDiXDfZwC6XYC6fxHI1jl3A3Ill.jpg",
-            "genre": "Bilim Kurgu / Macera"
+            "genre": "Bilim Kurgu / Macera",
+            "titleSuffix": " (1998)"
         },
         {
             "title": "Guilty Crown",
             "id": "guiltycrown",
             "cover": "https://image.tmdb.org/t/p/original/sMUzeL5G8NkNpNhgPZPpauS7CYD.jpg",
-            "genre": "Aksiyon / Bilim Kurgu"
+            "genre": "Aksiyon / Bilim Kurgu",
+            "titleSuffix": " (2011)"
         },
         {
             "title": "Berserk",
@@ -2621,25 +1977,8 @@
             "title": "The Cockpit",
             "id": "thecockpit",
             "cover": "https://image.tmdb.org/t/p/original/5GWT0cPO8IwdVChh6VfOcG6hwQP.jpg",
-            "genre": "Tarihi / Askeri / Dram"
-        },
-        {
-            "title": "One Punch Man",
-            "id": "onepunchman",
-            "cover": "https://image.tmdb.org/t/p/original/dT10AxJIXVvRwFAew4tt2RhzJrD.jpg",
-            "genre": "Aksiyon / Komedi / Süper Kahraman",
-            "titleSuffix": " (2015)",
-            "seasons": [
-                1,
-                2,
-                3
-            ]
-        },
-        {
-            "title": "Gintama",
-            "id": "gintama",
-            "cover": "https://image.tmdb.org/t/p/original/f7vK8pzZIqhyA8sYmBpWmp9Ae7.jpg",
-            "genre": "Aksiyon / Komedi / Bilim Kurgu"
+            "genre": "Tarihi / Askeri / Dram",
+            "titleSuffix": " (1993)"
         }
     ],
     "watchlistData": [
